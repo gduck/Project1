@@ -1,0 +1,2 @@
+class LanguageProfsController < ApplicationController
+end
