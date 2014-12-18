@@ -5,13 +5,14 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <script type="text/javascript" src="https://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,200,300' rel='stylesheet' type='text/css'>
 
     <%= csrf_meta_tags %>
   </head>
 
   
 
-  <body>
+  <body class="body-class">
     <!-- main content put into a 10 wide column for white space either side -->
     <div class="container">
       <div class="row">
@@ -43,7 +44,9 @@
               <div class="row">
                 <div class="col-md-10 col--offset-1 col-xs-12">
                   <div class="footer-inner">
-                    <p class="text-muted">footer here.</p>
+                    <% if current_user %>
+                      <%= "Signed in as #{current_user.email}" %>
+                    <% end %>
                   </div>
                 </div>
               </div>

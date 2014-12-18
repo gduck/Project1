@@ -1,0 +1,65 @@
+html {
+
+  position: relative;
+  min-height: 100%;
+}
+
+.body-class {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+#header {
+  background: #4014CC;
+  /*position: fixed;*/
+  /*top: 0;*/
+  height: 50px;
+}
+
+.navbar-fixed-top {
+  background: #4014CC;
+}
+
+#main {
+  background: #ffffff;
+}
+
+#main h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.logo-space {
+  margin-top: 20px;
+  height: 200px;
+  background: #ffffff;
+}
+.logo-space .img-class {
+  max-height: 200px;
+  padding: 5px;
+}
+
+.linkbar {
+  height: 40px;
+  background: #FF7700;
+  margin-top: 20px;
+}
+
+/*stuff below from bootstrap sticky footer*/
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  /*background-color: #eeeeee;*/
+}
+
+.img-class {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.footer-inner{
+  background-color: #4014CC;
+  height: 60px;
+}
