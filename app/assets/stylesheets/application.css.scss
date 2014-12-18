@@ -18,6 +18,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 #header {
   background: #CCFF99;
   /*position: fixed;*/
@@ -28,6 +33,11 @@
 
 #main {
   background: #CCC999;
+}
+
+#main h1 {
+  margin: 0;
+  padding: 0;
 }
 
 .logo-space {
@@ -48,13 +58,12 @@
 
 /*stuff below from bootstrap sticky footer*/
 .footer {
- /* position: absolute;
+  position: absolute;
   bottom: 0;
-*/
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 60px;
-  background-color: #eeeeee;
+  /*background-color: #eeeeee;*/
 }
 
 .img-class {
@@ -62,4 +71,7 @@
   max-height: 100%;
 }
 
-
+.footer-inner{
+  background-color: #eeeeee;
+  height: 60px;
+}

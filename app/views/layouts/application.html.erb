@@ -15,10 +15,16 @@
     <!-- main content put into a 10 wide column for white space either side -->
     <div class="container">
       <div class="row">
-        <div class="col-md-10 col-md-offset-1 col-xs-12">
+        <div class="col-md-10 col--offset-1 col-xs-12">
           
-          <header id="header">    
-            <%= render 'layouts/header' %>
+          <header id="header">
+            <div class="container">
+              <div class="row">
+                  <div class="col-md-10 col--offset-1 col-xs-12">
+                    <%= render 'layouts/header' %>
+                  </div>
+              </div>
+            </div>
           </header>
 
           <main id="main">
@@ -28,18 +34,22 @@
 
             <%= yield %>
           </main>
+        </div>
+      </div>
+    </div>
 
           <footer class="footer">
-            <div class="container-fluid">
+            <div class="container">
               <div class="row">
-                <p class="text-muted">footer here.</p>
+                <div class="col-md-10 col--offset-1 col-xs-12">
+                  <div class="footer-inner">
+                    <p class="text-muted">footer here.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </footer>
 
-        </div>
-      </div>
-    </div>
   </body>
 
 </html>
