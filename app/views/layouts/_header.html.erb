@@ -1,0 +1,19 @@
+<% if current_user %>
+  <div>
+    <div class="col-xs-1">
+      <%= button_to "Home", users_path, :method => :get %>
+    </div>
+    <div class="col-xs-6 left-align white-color">
+      <%= "Signed in as #{current_user.email}" %><br>
+    </div>
+    <div class="col-xs-5 right-align">
+      <%= button_to "Sign out", destroy_user_session_path, :method => :delete%>
+    </div>
+  </div>
+<% else %>
+  <div class="left-align">
+<!-- default method is GET -->
+    <%= button_to "Sign up", new_user_registration_path, :method => :get%>
+    <%= button_to "Sign in", user_session_path, :method => :post%>
+  </div>
+<% end %>
