@@ -10,6 +10,11 @@ html {
   font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
+.btn-default.transparent {
+  background: transparent;
+  border: none;
+}
+
 #header {
   background: #4014CC;
   /*position: fixed;*/
@@ -36,7 +41,7 @@ html {
 
 .logo-space {
   margin-top: 20px;
-  height: 200px;
+  // min-height: 100px;
   background: #ffffff;
 }
 .logo-space .img-class {
@@ -45,6 +50,8 @@ html {
   // margin-bottom: 20px;
   // margin-top: 20px;
 }
+
+
 
 #list-users {
   padding: 0;
@@ -56,6 +63,8 @@ html {
   height: 40px;
   background: #FF7700;
   margin-top: 20px;
+  text-align: center;
+  vertical-align: middle;
 }
 
 /*stuff below from bootstrap sticky footer*/
@@ -82,6 +91,7 @@ html {
 #login-wrapper {
   display: table;
   min-height: 150px;
+  padding: 0;
 }
 
 #login-box {
@@ -91,6 +101,7 @@ html {
   display: table-cell; 
   vertical-align: middle;
   padding: 10px;
+  text-align: left;
 }
 
 #content-box {
@@ -98,3 +109,7 @@ html {
   display: inline-block;
 }
 
+.nobullet {
+  list-style-type: none;
+  padding:0; margin:0;
+}
