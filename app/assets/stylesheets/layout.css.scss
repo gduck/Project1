@@ -1,3 +1,5 @@
+
+
 html {
 
   position: relative;
@@ -13,6 +15,10 @@ html {
   /*position: fixed;*/
   /*top: 0;*/
   height: 50px;
+  color: #ffffff;
+}
+#header a {
+  color: white;
 }
 
 .navbar-fixed-top {
@@ -40,6 +46,12 @@ html {
   // margin-top: 20px;
 }
 
+#list-users {
+  padding: 0;
+  margin-top: 0px;
+  margin-left: 20px;
+}
+
 .linkbar {
   height: 40px;
   background: #FF7700;
@@ -58,7 +70,7 @@ html {
 
 .img-class {
   max-width: 100%;
-  max-height: 100%;
+  max-height: 90%;
   margin: 10px;
 }
 
@@ -66,3 +78,23 @@ html {
   background-color: #4014CC;
   height: 60px;
 }
+
+#login-wrapper {
+  display: table;
+  min-height: 150px;
+}
+
+#login-box {
+  border: 1px solid black;
+  border-radius: 25px;
+  height: 100%;
+  display: table-cell; 
+  vertical-align: middle;
+  padding: 10px;
+}
+
+#content-box {
+  margin-top: 20px;
+  display: inline-block;
+}
+

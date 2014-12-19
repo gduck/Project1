@@ -16,14 +16,14 @@
     <!-- main content put into a 10 wide column for white space either side -->
     <div class="container">
       <div class="row">
-        <div class="col-md-10 col--offset-1 col-xs-12">
+        <div class="col-md-10 col-sm-offset-1 col-xs-11">
           
           <header id="header">
             <div class="container">
               <div class="row">
-                  <div class="col-md-10 col--offset-1 col-xs-12">
+                  <!-- <div class="col-md-10 col-md-offset-1 col-xs-12"> -->
                     <%= render 'layouts/header' %>
-                  </div>
+                  <!-- </div> -->
               </div>
             </div>
           </header>
@@ -33,8 +33,21 @@
             <%= render 'layouts/logospace' %>
             <%= render 'layouts/linkbar' %>
 
-            <%= yield %>
+            <div id="content-box" class="col-xs-12">
+              <div class="container">
+                <div class="row">
+                  <div id="login-wrapper" class="hidden-xs hidden-sm col-md-1">
+                    <%= render 'layouts/signinbox'%>
+                  </div>
+                  <div id="yield" class="col-xs-12 col-md-8">
+                    <%= yield %>
+                  </div>
+                </div>  <!-- end row -->
+              </div>
+            </div> <!-- end content box -->
+
           </main>
+
         </div>
       </div>
     </div>
@@ -42,7 +55,7 @@
           <footer class="footer">
             <div class="container">
               <div class="row">
-                <div class="col-md-10 col--offset-1 col-xs-12">
+                <div class="col-md-10 col-sm-offset-1 col-xs-11">
                   <div class="footer-inner">
                     <% if current_user %>
                       <%= "Signed in as #{current_user.email}" %>

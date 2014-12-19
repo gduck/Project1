@@ -16,4 +16,3 @@
 //= require bootstrap
 
 
-<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,200,300' rel='stylesheet' type='text/css'>
