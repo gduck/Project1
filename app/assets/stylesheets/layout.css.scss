@@ -18,16 +18,14 @@
 // HEADER
 #header {
   background: #4014CC;
-  /*position: fixed;*/
-  /*top: 0;*/
   height: 50px;
   color: #ffffff;
 }
 #header a {
-  color: white;
+  color: #FF7700;
 }
 .navbar-fixed-top {
-  // background: #4014CC;
+  //background: #4014CC;
 }
 .navbar-toggle .icon-bar {
   background: white;
@@ -35,7 +33,10 @@
 .navbar-header {
   padding-left: 10px;
 }
-
+#navbar {
+  background: tranparent;
+  color: black;
+}
 
 
 
@@ -72,7 +73,7 @@
 .footer-inner{
   background-color: #4014CC;
   height: 60px;
-  color: white;
+  color: #FF7700;
   text-align: center;
   padding: 10px;
 }
