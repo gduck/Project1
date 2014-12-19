@@ -1,20 +1,21 @@
 
 
-html {
 
-  position: relative;
-  min-height: 100%;
-}
-
+// BODY STUFF
 .body-class {
   font-family: 'Yanone Kaffeesatz', sans-serif;
 }
-
-.btn-default.transparent {
-  background: transparent;
-  border: none;
+#main {
+  background: #ffffff;
+}
+#main h1 {
+  margin: 0;
+  padding: 0;
 }
 
+
+
+// HEADER
 #header {
   background: #4014CC;
   /*position: fixed;*/
@@ -25,20 +26,17 @@ html {
 #header a {
   color: white;
 }
-
 .navbar-fixed-top {
-  background: #4014CC;
+  // background: #4014CC;
+}
+.navbar-toggle .icon-bar {
+  background: white;
 }
 
-#main {
-  background: #ffffff;
-}
 
-#main h1 {
-  margin: 0;
-  padding: 0;
-}
 
+
+// LOGO SPACE & LINKBAR
 .logo-space {
   margin-top: 20px;
   // min-height: 100px;
@@ -50,15 +48,6 @@ html {
   // margin-bottom: 20px;
   // margin-top: 20px;
 }
-
-
-
-#list-users {
-  padding: 0;
-  margin-top: 0px;
-  margin-left: 20px;
-}
-
 .linkbar {
   height: 40px;
   background: #FF7700;
@@ -67,6 +56,7 @@ html {
   vertical-align: middle;
 }
 
+// FOOTER
 /*stuff below from bootstrap sticky footer*/
 .footer {
   position: absolute;
@@ -76,24 +66,22 @@ html {
   height: 60px;
   /*background-color: #eeeeee;*/
 }
-
-.img-class {
-  max-width: 100%;
-  max-height: 90%;
-  margin: 10px;
-}
-
 .footer-inner{
   background-color: #4014CC;
   height: 60px;
+  color: white;
+  text-align: center;
+  padding: 10px;
 }
 
+
+
+// MAIN CONTENT
 #login-wrapper {
   display: table;
   min-height: 150px;
   padding: 0;
 }
-
 #login-box {
   border: 1px solid black;
   border-radius: 25px;
@@ -103,13 +91,29 @@ html {
   padding: 10px;
   text-align: left;
 }
-
 #content-box {
   margin-top: 20px;
   display: inline-block;
 }
+#list-users {
+  padding: 0;
+  margin-top: 0px;
+  margin-left: 20px;
+}
 
+
+// GENERAL
+.btn-default.transparent {
+  background: transparent;
+  border: none;
+}
 .nobullet {
   list-style-type: none;
   padding:0; margin:0;
 }
+.img-class {
+  max-width: 100%;
+  max-height: 90%;
+  margin: 10px;
+}
+
