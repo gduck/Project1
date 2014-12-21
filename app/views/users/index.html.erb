@@ -15,8 +15,10 @@
       <% @lang_profs.each do |langprof| %>
         <tr>  
           <td><%= langprof.id %></td>
-          <td><%= User.find(langprof.user_id).email %></td>
-          <td><%= Language.find(langprof.language_id).name %></td>
+          <!-- <td><%#= User.find(langprof.user_id).email %></td> -->
+          <!-- This doesn't work -->
+          <td><%= langprof.user.email %></td>
+          <td><%= langprof.language.name %></td>
           <td><%= langprof.language_proficiency %></td>
         </tr>
       <% end %>
