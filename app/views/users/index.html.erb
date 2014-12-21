@@ -5,23 +5,28 @@
   <table class="table">
     <thead>
       <tr>
-        <th>LanProf ID</th>
+        <!-- <th>LanProf ID</th> -->
         <th>User</th>
         <th>Languages ID</th>
         <th>Proficiency</th>
       </tr>
     </thead>
     <tbody>
-      <% @lang_profs.each do |langprof| %>
+      <% @users.each do |user| %>
         <tr>  
-          <td><%= langprof.id %></td>
-          <!-- <td><%#= User.find(langprof.user_id).email %></td> -->
-          <!-- This doesn't work -->
-          <td><%= langprof.user.email %></td>
-          <td><%= langprof.language.name %></td>
-          <td><%= langprof.language_proficiency %></td>
+          <td><%= user.email %></td> 
+
+          <td>
+            <% @langprofs.name %>
+            <% @langprofs.lang_proficiency %>
+
+            <!-- <%# user.lang_proficiency %> -->
+          </td>
+
+          <% puts ">>>>>>>>>>>> #{user.languages}" %>
         </tr>
       <% end %>
+
     </tbody>
   </table>
 </div>
