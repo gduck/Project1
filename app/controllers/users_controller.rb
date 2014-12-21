@@ -7,9 +7,9 @@ class UsersController < ApplicationController
     @langprofs = LanguageProf.all.order(:user_id)
     #@langprof = LanguageProf.select("DISTINCT(user_id)").merge(LanguageProf.group(:user_id, :language_id)).order(:user_id)
 
-    # get unique userIDs that have lang profs
-    userIDs = LanguageProf.group(:user_id)
-    @users = User.select(userIDs)
+
+    # userIDs = LanguageProf.find(:user_id).unique;
+    # @users = User.where("user_id = ?", userIDs)
 
 
 

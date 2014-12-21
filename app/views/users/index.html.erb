@@ -12,13 +12,13 @@
       </tr>
     </thead>
     <tbody>
-      <% @users.each do |user| %>
+      <% @langprofs.user.each do |user| %>
         <tr>  
           <td><%= user.email %></td> 
 
           <td>
             <% @langprofs.name %>
-            <% @langprofs.lang_proficiency %>
+            <!-- <%# @langprofs.lang_proficiency %> -->
 
             <!-- <%# user.lang_proficiency %> -->
           </td>
