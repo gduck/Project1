@@ -5,16 +5,19 @@
   <table class="table">
     <thead>
       <tr>
-        <th>User ID</th>
-        <th>Email</th>
-        <th>link</th>
+        <th>LanProf ID</th>
+        <th>User</th>
+        <th>Languages ID</th>
+        <th>Proficiency</th>
       </tr>
     </thead>
     <tbody>
-      <% @users.each do |user| %>
+      <% @lang_profs.each do |langprof| %>
         <tr>  
-          <td class="user-ID"><%= user.id %></td>
-          <td class="user-email"><%= user.email %></td>
+          <td><%= langprof.id %></td>
+          <td><%= User.find(langprof.user_id).email %></td>
+          <td><%= Language.find(langprof.language_id).name %></td>
+          <td><%= langprof.language_proficiency %></td>
         </tr>
       <% end %>
     </tbody>

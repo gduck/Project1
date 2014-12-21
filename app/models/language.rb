@@ -1,3 +1,3 @@
 class Language < ActiveRecord::Base
-  belongs_to :language_prof
+  has_and_belongs_to_many :language_prof
 end
