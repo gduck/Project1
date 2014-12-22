@@ -1,0 +1,47 @@
+<div id="show-user">
+<!-- This is the view -->
+
+<%= @user.email %>
+<%#= @user.first_name %>
+<%#= @user.last_name %>
+
+
+<table class="table"> 
+  <tbody> 
+  
+    <tr>
+      <th>Languages</th>
+      <th>Proficiency</th>
+    </tr>
+
+    <tr>
+      <td>
+        <% @user.languages.each do |lang| %>
+          <%= lang.name  %>
+        <br>
+        <% end %>
+      </td>
+
+      <td>
+        <% @user.language_profs.each do |lprof| %>
+          <%= $prof_name[lprof.language_proficiency]  %>
+          <br>
+        <% end %>
+      </td>
+
+    </tr>
+
+ </tbody>
+</table>
+</div>
+
+
+
+
+
+
+
+
+
+
+

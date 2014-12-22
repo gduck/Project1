@@ -6,8 +6,7 @@ class UsersController < ApplicationController
     @users_with_lang_profs =  User.order(created_at: :desc).joins(:language_profs).includes(:language_profs).limit(5)
 
 
-    @prof_name = [
-      'Beginner', 'Conversational', 'Fluent', 'Native' ]
+    $prof_name = ['Beginner', 'Conversational', 'Fluent', 'Native' ]
 
   def show
     
