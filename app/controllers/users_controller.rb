@@ -1,17 +1,9 @@
 class UsersController < ApplicationController
   def index
-    #@users = User.all
-    #user = User.new
-
-    # @languages = Language.all
-    @langprofs = LanguageProf.all.order(:user_id)
-    #@langprof = LanguageProf.select("DISTINCT(user_id)").merge(LanguageProf.group(:user_id, :language_id)).order(:user_id)
-
-
-    # userIDs = LanguageProf.find(:user_id).unique;
-    # @users = User.where("user_id = ?", userIDs)
-
-    @users_with_lang_profs =  User.joins(:language_profs).includes(:language_profs)
+    
+    # only users with some language proficiency needed
+    # limit to 5 for the front page, most recent
+    @users_with_lang_profs =  User.order(created_at: :desc).joins(:language_profs).includes(:language_profs).limit(5)
 
 
     @prof_name = [
