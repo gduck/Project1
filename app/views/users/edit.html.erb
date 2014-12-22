@@ -1,0 +1,63 @@
+<div id="edit-user">
+<!-- This is the view -->
+
+  <span>
+    <%= @user.email %>
+  </span>
+  <span>
+  </span>
+
+
+  <table class="table"> 
+    <tbody> 
+  
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Languages</th>
+        <th>Proficiency</th>
+      </tr>
+
+      <tr>
+        <%= form_for @user, :method => :post do |user_form| %>
+          <td>
+            First name: <%= user_form.text_field :first_name %>
+          </td>
+         <td>
+            Last name: <%= user_form.text_field :last_name %>
+          </td>
+          <td>
+            <% @user.languages.each do |lang| %>
+              <%= lang.name  %>
+              
+            <% end %>
+            <br>
+          </td>
+
+          <td>
+            <% @user.language_profs.each do |lprof| %>
+              <%= $prof_name[lprof.language_proficiency]  %>
+              <br>
+            <% end %>
+          </td>
+          <div class="btn-group"><button class="btn btn-default" type="button">
+              <%= user_form.submit "Submit" %></button>
+              <%= flash[:message] %>
+        <% end %>
+
+      </tr>
+
+  </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
