@@ -16,23 +16,21 @@
         <tr>  
           <td><%= user.email %></td> 
 
-
           <td>
-            <%= user.languages.each do |lang| %>
+            <% user.languages.each do |lang| %>
               <%= lang.name  %>
               <br>
             <% end %>
           </td>
 
           <td>
-            <%= user.language_profs.each do |lprof| %>
-              <%= lprof.language_proficiency  %>
+            <% user.language_profs.each do |lprof| %>
+              <%= @prof_name[lprof.language_proficiency]  %>
+
               <br>
             <% end %>
           </td>
 
-
-          <% puts ">>>>>>>>>>>> #{user.languages}" %>
         </tr>
       <% end %>
 
