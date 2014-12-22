@@ -1,38 +1,41 @@
 <div id="show-user">
 <!-- This is the view -->
 
-<%= @user.email %>
-<%#= @user.first_name %>
-<%#= @user.last_name %>
+  <span>
+    <%= @user.email %>
+  </span>
+  <span>
+    <%= link_to "edit", edit_user_path %>
+  </span>
 
 
-<table class="table"> 
-  <tbody> 
+  <table class="table"> 
+    <tbody> 
   
-    <tr>
-      <th>Languages</th>
-      <th>Proficiency</th>
-    </tr>
+      <tr>
+        <th>Languages</th>
+        <th>Proficiency</th>
+      </tr>
 
-    <tr>
-      <td>
-        <% @user.languages.each do |lang| %>
-          <%= lang.name  %>
-        <br>
-        <% end %>
-      </td>
-
-      <td>
-        <% @user.language_profs.each do |lprof| %>
-          <%= $prof_name[lprof.language_proficiency]  %>
+      <tr>
+        <td>
+          <% @user.languages.each do |lang| %>
+            <%= lang.name  %>
           <br>
-        <% end %>
-      </td>
+          <% end %>
+        </td>
 
-    </tr>
+        <td>
+          <% @user.language_profs.each do |lprof| %>
+            <%= $prof_name[lprof.language_proficiency]  %>
+            <br>
+          <% end %>
+        </td>
 
- </tbody>
-</table>
+      </tr>
+
+  </tbody>
+  </table>
 </div>
 
 

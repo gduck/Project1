@@ -28,21 +28,10 @@
 
           <main id="main">
 
-            <%= render 'layouts/logospace' %>
-            <%= render 'layouts/linkbar' %>
+            <%#= render 'layouts/logospace' %>
+            <%#= render 'layouts/linkbar' %>
+            <%= yield %>
 
-            <div id="content-box" class="col-xs-12 container">
-              <!-- <div class="container"> -->
-                <div class="row">
-                  <div id="login-wrapper" class="hidden-xs hidden-sm col-md-1">
-                    <%= render 'layouts/signinbox'%>
-                  </div>
-                  <div id="yield" class="col-xs-12 col-md-10 col-lg-10">
-                    <%= yield %>
-                  </div>
-                </div>  <!-- end row -->
-              <!-- </div> -->
-            </div> <!-- end content box -->
 
           </main>
 
