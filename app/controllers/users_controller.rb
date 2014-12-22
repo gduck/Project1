@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     # userIDs = LanguageProf.find(:user_id).unique;
     # @users = User.where("user_id = ?", userIDs)
 
+    @users_with_lang_profs =  User.joins(:language_profs).includes(:language_profs)
 
 
     @prof_name = [

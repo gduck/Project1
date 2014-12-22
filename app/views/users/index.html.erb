@@ -7,21 +7,30 @@
       <tr>
         <!-- <th>LanProf ID</th> -->
         <th>User</th>
-        <th>Languages ID</th>
+        <th>Languages</th>
         <th>Proficiency</th>
       </tr>
     </thead>
     <tbody>
-      <% @langprofs.user.each do |user| %>
+      <% @users_with_lang_profs.each do |user| %>
         <tr>  
           <td><%= user.email %></td> 
 
-          <td>
-            <% @langprofs.name %>
-            <!-- <%# @langprofs.lang_proficiency %> -->
 
-            <!-- <%# user.lang_proficiency %> -->
+          <td>
+            <%= user.languages.each do |lang| %>
+              <%= lang.name  %>
+              <br>
+            <% end %>
           </td>
+
+          <td>
+            <%= user.language_profs.each do |lprof| %>
+              <%= lprof.language_proficiency  %>
+              <br>
+            <% end %>
+          </td>
+
 
           <% puts ">>>>>>>>>>>> #{user.languages}" %>
         </tr>
