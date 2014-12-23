@@ -33,9 +33,9 @@
         <label class="desc" id="native-lang-lbl">Native Language<span id="req_1" class="req">*</span></label>
         <div>
           <select id="native-lang-select" name="native-language-select" class="field select" onclick="handleInput(this);" tabindex="4" required>
-            <option value="English">English</option>
-            <option value="Chinese (Cantonese)">Chinese (Cantonese)</option>
-            <option value="Chinese (Mandarin)">Chinese (Mandarin)</option>
+            <% @languages.each do |lang| %>
+              <option value=<%= lang.id %>><%= lang.name %></option>
+            <% end %>
           </select>
         </div>
       </li>
@@ -43,9 +43,9 @@
         <label class="desc" id="other-lang-lbl">Are you multilingual?</label>
         <div>
           <select id="other-lang-select" name="other-language-select" class="field select" onclick="handleInput(this);" tabindex="5">
-            <option value="lang1">lang1</option>
-            <option value="lang2">lang2</option>
-            <option value="lang3">lang3</option>
+            <% @languages.each do |lang| %>
+              <option value=<%= lang.id %>><%= lang.name %></option>
+            <% end %>
           </select>
         </div>
       </li>
