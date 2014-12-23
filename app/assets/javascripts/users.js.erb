@@ -4,11 +4,29 @@
 $(document).ready(function() {
 
   $("#other-lang-select").change(function() {
-    alert("Handler for other-lang-select called." );
+
+    var language = $("#native-lang-select option:selected").text();
+
+    $('#other-lang').append(+
+      "<span class=\"remove-lang\">Remove</span>"+
+      "<span class=\"other-lang-list\" class=\"wide\">" +language +"</span>"+
+      "<span class=\"prof-selection\" >"+
+        "<select id=\"prof-select\" name=\"proficiency-select\" class=\"field select\" onclick=\"handleInput(this);\" tabindex=\"5\" required>" + 
+          <% $prof_name.each do |name| %> +
+            "<option value=\"<%= name %>\"><%= name %></option>" +
+          <% end %> +
+        "</select>" +
+      "</span>"
+      )
+ 
   });
 
   $("#native-lang-select").change(function() {
     $("#native-lang").html($("#native-lang-select option:selected").text());
   });
 
+
+
+
 });
+

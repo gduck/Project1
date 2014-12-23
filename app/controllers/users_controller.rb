@@ -28,6 +28,7 @@ class UsersController < ApplicationController
 
   def edit
     @languages = Language.all
+    @language_prof = LanguageProf.new()
   end
 
 end

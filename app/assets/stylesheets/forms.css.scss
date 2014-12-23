@@ -4,7 +4,11 @@
 }
 
 .form-class li {
-width: 64%;
+width: 80%;
+}
+
+.margin-bottom {
+  margin-bottom: 10px;
 }
 
 form ul {
@@ -31,7 +35,10 @@ input.field {
 }
 
 .full {
-width: 100% !important;
+  width: 100% !important;
+}
+.wide {
+  width: 40% !important;
 }
 
 form li {

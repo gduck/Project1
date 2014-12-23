@@ -32,7 +32,7 @@
       <li class="leftHalf">
         <label class="desc" id="native-lang-lbl">Native Language<span id="req_1" class="req">*</span></label>
         <div class="full">
-          <span>First language: </span><span id="native-lang"></span>
+          <span class="margin-btm">First language: </span><span id="native-lang">English</span>
         </div>
         <div>
           <select id="native-lang-select" name="native-language-select" class="field select" onclick="handleInput(this);" tabindex="4" required>
@@ -45,6 +45,16 @@
       <li class="rightHalf">
         <label class="desc" id="other-lang-lbl">Are you multilingual?</label>
         <div>
+          <div id="other-lang" class="row">
+            <span id="other-lang-list" class="wide">Language here</span>
+            <span id="prof-selection" >
+              <select id="prof-select" name="proficiency-select" class="field select" onclick="handleInput(this);" tabindex="5" required>
+                <% $prof_name.each do |name| %>
+                  <option value=<%= name %>><%= name %></option>
+                <% end %>
+              </select>
+            </span>
+          </div>
           <select id="other-lang-select" name="other-language-select" class="field select" onclick="handleInput(this);" tabindex="5">
             <% @languages.each do |lang| %>
               <option value=<%= lang.id %>><%= lang.name %></option>
