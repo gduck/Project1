@@ -31,6 +31,9 @@
       
       <li class="leftHalf">
         <label class="desc" id="native-lang-lbl">Native Language<span id="req_1" class="req">*</span></label>
+        <div class="full">
+          <span>First language: </span><span id="native-lang"></span>
+        </div>
         <div>
           <select id="native-lang-select" name="native-language-select" class="field select" onclick="handleInput(this);" tabindex="4" required>
             <% @languages.each do |lang| %>
