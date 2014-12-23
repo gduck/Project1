@@ -1,11 +1,59 @@
-<div id="edit-user">
+<div>
 <!-- This is the view -->
 
-  <span>
-    <%= @user.email %>
-  </span>
-  <span>
-  </span>
+  
+
+  <form id="edit-user" name="edit-form" class="form-class" accept-charset="UTF-8" autocomplete="off" method="post">
+    <header class="info">
+      <h2>Edit details for <%= @user.email %></h2>
+    </header>
+    <ul>
+      <li>
+        <label class="desc">Name<span id="req_1" class="req">*</span></label>
+        <span>
+          <input id="first-name" name="first-name-field" type="text" class="field text" value size="8" tabindex="1" onkeyup="handleInput(this);" onchange="handleInput(this);" required>
+          <label for="first-name">First</label>
+        </span>
+        <span>
+          <input id="last-name" name="last-name-field" type="text" class="field text" value size="8" tabindex="2" onkeyup="handleInput(this);" onchange="handleInput(this);" required>
+          <label for="last-name">Last</label>
+        </span>      
+      </li>
+      <li class="">
+        <label class="desc">Address<span id="req_2" class="req">*</span></label>
+        <div>
+          <span class="address-area full">
+            <input id="address" name="address-field" type="text" class="field text full" value size="8" tabindex="3" onkeyup="handleInput(this);" onchange="handleInput(this);" required>
+            <label for="address">Area (HK Island, Kowloon, NT)</label>
+          </span>
+        </div>
+      </li>
+      
+      <li class="leftHalf">
+        <label class="desc" id="native-lang-lbl">Native Language<span id="req_1" class="req">*</span></label>
+        <div>
+          <select id="native-lang-select" name="native-language-select" class="field select" onclick="handleInput(this);" tabindex="4" required>
+            <option value="English">English</option>
+            <option value="Chinese (Cantonese)">Chinese (Cantonese)</option>
+            <option value="Chinese (Mandarin)">Chinese (Mandarin)</option>
+          </select>
+        </div>
+      </li>
+      <li class="rightHalf">
+        <label class="desc" id="other-lang-lbl">Are you multilingual?</label>
+        <div>
+          <select id="other-lang-select" name="other-language-select" class="field select" onclick="handleInput(this);" tabindex="5">
+            <option value="lang1">lang1</option>
+            <option value="lang2">lang2</option>
+            <option value="lang3">lang3</option>
+          </select>
+        </div>
+      </li>
+
+      </ul>
+
+
+  </form>
 
 
   <table class="table"> 
@@ -29,9 +77,9 @@
           <td>
             <% @user.languages.each do |lang| %>
               <%= lang.name  %>
-              
+              <br>
             <% end %>
-            <br>
+            
           </td>
 
           <td>
@@ -40,15 +88,20 @@
               <br>
             <% end %>
           </td>
+
           <div class="btn-group"><button class="btn btn-default" type="button">
-              <%= user_form.submit "Submit" %></button>
-              <%= flash[:message] %>
+            <%= user_form.submit "Submit" %></button>
+            <%= flash[:message] %>
+          </div>
+
         <% end %>
 
       </tr>
 
   </tbody>
   </table>
+
+
 </div>
 
 

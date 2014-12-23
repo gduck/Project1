@@ -1,0 +1,98 @@
+
+#last-name {
+  width: 150%;
+}
+
+.form-class li {
+width: 64%;
+}
+
+form ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 6px 1% 9px 1%;
+  clear: both;
+  background-color: transparent;
+  position: relative;
+}
+
+label.desc {
+  line-height: 150%;
+  margin: 0;
+  padding: 0 0 3px 0;
+  border: none;
+  display: block;
+  white-space: normal;
+  width: 100%;
+}
+
+input.field {
+  //width: 100%;
+}
+
+.full {
+width: 100% !important;
+}
+
+form li {
+  margin: 0;
+  padding: 6px 1% 9px 1%;
+  clear: both;
+  background-color: transparent;
+  position: relative;
+}
+
+form li div {
+  width: 100;
+}
+
+form li span {
+margin: 0 .3em 0 0;
+padding: 0;
+float: left;
+color: #444;
+}
+
+form li span label {
+margin: 0;
+padding-top: 3px;
+clear: both;
+font-size: 85%;
+line-height: 160%;
+color: #444;
+display: block;
+}
+
+form span.req {
+display: inline;
+float: none;
+color: red !important;
+font-weight: bold;
+margin: 0;
+padding: 0;
+}
+
+form li.leftHalf {
+  clear: left !important;
+  float: left;
+  width: 47% !important;
+}
+form li.rightHalf {
+  clear: none !important;
+  float: right;
+  width: 47% !important;
+}
+
+form.form-class {
+margin: 20px 14px 0 14px;
+padding: 0 0 20px 0;
+position: relative;
+}
+
+form ul:after, form li:after, form li div:after {
+content: ".";
+display: block;
+height: 0;
+clear: both;
+visibility: hidden;
+}

@@ -1,4 +1,18 @@
 class UsersController < ApplicationController
+  
+  before_action :get_user, only: [:edit, :update, :destroy, :show]
+  before_action :check_auth, only: [:edit, :update, :destroy, :show]
+
+  def get_user
+    @user = User.find(params[:id]) 
+  end
+
+  def check_auth
+    #if session[:user_id] != @user.user_id
+      # flash[:notice] = "Sorry, you can't edit this"
+      # redirect_to(show_path)
+  end
+
   def index
     
     # only users with some language proficiency needed
@@ -9,11 +23,11 @@ class UsersController < ApplicationController
 
 
   def show
-    @user = User.find(params[:id]) 
+    #@user = User.find(params[:id]) 
   end
 
   def edit
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
   end
 
 end
