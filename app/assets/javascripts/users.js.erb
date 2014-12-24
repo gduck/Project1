@@ -39,6 +39,17 @@ $(document).ready(function() {
     $(this).parent().remove();
   });
 
+  $("#user_languages").on('focus', function(e) {
+    e.preventDefault();
+    var nativeLangID = parseInt($("#user_first_language option:selected").val());
+    var nativeLangID;
+    console.log("click function", nativeLangID);
+    // nativeLangID = <%# @languages.find(:id).where(:name => nativeLang) %>
+
+    $("option[value="+nativeLangID+"]")
+      .attr("disabled", "disabled")
+      .siblings().removeAttr("disabled");
+  });
 
 
 });
