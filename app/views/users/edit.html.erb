@@ -1,7 +1,7 @@
 <div>
 <!-- This is the view -->
-
   
+  <%= form_for @user, :method => :post do |user_form| %>
 
   <form id="edit-user" name="edit-form" class="form-class" accept-charset="UTF-8" autocomplete="off" method="post">
     <header class="info">
@@ -11,10 +11,12 @@
       <li>
         <label class="desc">Name<span id="req_1" class="req">*</span></label>
         <span>
-          <input id="first-name" name="first-name-field" type="text" class="field text" value size="8" tabindex="1" onkeyup="handleInput(this);" onchange="handleInput(this);" required>
+          <%= user_form.text_field :first_name %>
+          <input id="first-name" name="first-name-field" type="text" class="field text" value size="8" tabindex="1" required>
           <label for="first-name">First</label>
         </span>
         <span>
+          <%= user_form.text_field :last_name %>
           <input id="last-name" name="last-name-field" type="text" class="field text" value size="8" tabindex="2" onkeyup="handleInput(this);" onchange="handleInput(this);" required>
           <label for="last-name">Last</label>
         </span>      
@@ -66,6 +68,11 @@
 
 
   </form>
+  <div class="btn-group"><button class="btn btn-default" type="button">
+    <%= user_form.submit "Submit" %></button>
+    <%= flash[:message] %>
+  </div>
+  <% end %>
 
 
   <table class="table"> 
@@ -79,12 +86,12 @@
       </tr>
 
       <tr>
-        <%= form_for @user, :method => :post do |user_form| %>
+        
           <td>
-            First name: <%= user_form.text_field :first_name %>
+            First name: 
           </td>
          <td>
-            Last name: <%= user_form.text_field :last_name %>
+            Last name: 
           </td>
           <td>
             <% @user.languages.each do |lang| %>
@@ -101,12 +108,9 @@
             <% end %>
           </td>
 
-          <div class="btn-group"><button class="btn btn-default" type="button">
-            <%= user_form.submit "Submit" %></button>
-            <%= flash[:message] %>
-          </div>
+          
 
-        <% end %>
+        
 
       </tr>
 
