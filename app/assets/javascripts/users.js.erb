@@ -3,21 +3,30 @@
 
 $(document).ready(function() {
 
+  var handleInput = function() {
+    console.log("handleInput called");
+  }
+
+
   $("#other-lang-select").change(function() {
 
-    var language = $("#native-lang-select option:selected").text();
+    var language = $("#other-lang-select option:selected").text();
+    console.log("New language selected: ", language)
 
-    $('#other-lang').append(+
-      "<span class=\"remove-lang\">Remove</span>"+
-      "<span class=\"other-lang-list\" class=\"wide\">" +language +"</span>"+
-      "<span class=\"prof-selection\" >"+
-        "<select id=\"prof-select\" name=\"proficiency-select\" class=\"field select\" onclick=\"handleInput(this);\" tabindex=\"5\" required>" + 
+    $('#other-lang').append(
+      "<tr>" +
+      "<td class=\"other-lang-list\" class=\"wide\">" +language +"</td>"+
+      "<td class=\"prof-selection\" >"+
+        "<select id=\"prof-select\" name=\"proficiency-select\" class=\"field select\"" +
+        "tabindex=\"5\" required>" 
           <% $prof_name.each do |name| %> +
-            "<option value=\"<%= name %>\"><%= name %></option>" +
+            "<option value=\"<%= name %>\"><%= name %></option>"
           <% end %> +
         "</select>" +
-      "</span>"
-      )
+      "</td>" +
+      "<td class=\"remove-lang\">Remove</td>"+
+      "</tr>"
+      );
  
   });
 

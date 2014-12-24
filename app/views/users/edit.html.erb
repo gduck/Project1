@@ -43,23 +43,26 @@
         </div>
       </li>
       <li class="rightHalf">
-        <label class="desc" id="other-lang-lbl">Are you multilingual?</label>
-        <div>
-          <div id="other-lang" class="row">
-            <span id="other-lang-list" class="wide">Language here</span>
-            <span id="prof-selection" >
-              <select id="prof-select" name="proficiency-select" class="field select" onclick="handleInput(this);" tabindex="5" required>
-                <% $prof_name.each do |name| %>
-                  <option value=<%= name %>><%= name %></option>
-                <% end %>
-              </select>
-            </span>
-          </div>
-          <select id="other-lang-select" name="other-language-select" class="field select" onclick="handleInput(this);" tabindex="5">
-            <% @languages.each do |lang| %>
-              <option value=<%= lang.id %>><%= lang.name %></option>
-            <% end %>
+        <div class="row full">
+          <label class="wide" id="other-lang-lbl">Are you multilingual?</label>
+          <select id="other-lang-select" name="other-language-select" class="field select" tabindex="5">
+              <% @languages.each do |lang| %>
+                <option value=<%= lang.id %>><%= lang.name %></option>
+              <% end %>
           </select>
+        </div>
+        <div>
+          <table>
+            <tbody id="other-lang">
+              <tr>
+                <td id="other-lang-list" class="wide">
+                </td>
+                <td id="prof-selection" >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          
         </div>
       </li>
 

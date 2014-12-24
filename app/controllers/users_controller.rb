@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   
   before_action :get_user, only: [:edit, :update, :destroy, :show]
   before_action :check_auth, only: [:edit, :update, :destroy, :show]
+  $prof_name = ['Beginner', 'Conversational', 'Fluent', 'Native' ]
+
 
   def get_user
     @user = User.find(params[:id]) 
