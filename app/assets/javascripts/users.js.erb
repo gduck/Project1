@@ -8,17 +8,24 @@ $(document).ready(function() {
   }
 
 
+
   $("#user_languages").change(function() {
 
     var language = $("#user_languages option:selected").text();
+    var languageID = $("#user_languages option:selected").val();
     console.log("New language selected: ", language)
+    drawLanguage(language, languageID);
 
+
+    });
+
+  var drawLanguage = function(language, languageID) {
     $('#other-lang').append(
-      "<tr class=\"full\" name=\""+language+"\">" +
+      "<tr class=\"full\" name=\""+language+"\" value=\""+ languageID +"\" >" +
       "<td class=\"other-lang-list\">" +language +"</td>"+
       "<td class=\"prof-selection\" >"+
         "<select class=\"prof-select\" name=\""+language+"\" class=\"field select\"" +
-        "tabindex=\"5\" required>" 
+        "tabindex=\"5\"  required>" 
           <% $prof_name.each do |name| %> +
             "<option name=\"<%= name %>\"><%= name %></option>"
           <% end %> +
@@ -26,12 +33,17 @@ $(document).ready(function() {
       "</td>" +
       "<td class=\"remove-lang\"><a href=\"#\">Remove</a></td>"+
       "</tr>"
-      );
- 
-  });
+    );
+  }
 
   $("#user_first_language").change(function() {
     $("#native-lang").html($("#user_first_language option:selected").text());
+
+    var nativeLangID = parseInt($("#user_first_language option:selected").val());
+
+    $("option[value="+nativeLangID+"]")
+      .attr("disabled", "disabled")
+      .siblings().removeAttr("disabled");
   });
 
   $(document).on('click', ".remove-lang", function(e) {
@@ -41,10 +53,8 @@ $(document).ready(function() {
 
   $("#user_languages").on('focus', function(e) {
     e.preventDefault();
+    console.log("focus function called");
     var nativeLangID = parseInt($("#user_first_language option:selected").val());
-    var nativeLangID;
-    console.log("click function", nativeLangID);
-    // nativeLangID = <%# @languages.find(:id).where(:name => nativeLang) %>
 
     $("option[value="+nativeLangID+"]")
       .attr("disabled", "disabled")
