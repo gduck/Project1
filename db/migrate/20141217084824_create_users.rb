@@ -4,6 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name
       t.string :first_language, null: false, default: "English"
+      t.string :address_area
 
       #t.integer :language_id
 

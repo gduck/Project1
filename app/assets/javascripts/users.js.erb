@@ -8,19 +8,19 @@ $(document).ready(function() {
   }
 
 
-  $("#other-lang-select").change(function() {
+  $("#user_languages").change(function() {
 
-    var language = $("#other-lang-select option:selected").text();
+    var language = $("#user_languages option:selected").text();
     console.log("New language selected: ", language)
 
     $('#other-lang').append(
-      "<tr class=\"full\">" +
+      "<tr class=\"full\" name=\""+language+"\">" +
       "<td class=\"other-lang-list\">" +language +"</td>"+
       "<td class=\"prof-selection\" >"+
-        "<select id=\"prof-select\" name=\"proficiency-select\" class=\"field select\"" +
+        "<select class=\"prof-select\" name=\""+language+"\" class=\"field select\"" +
         "tabindex=\"5\" required>" 
           <% $prof_name.each do |name| %> +
-            "<option value=\"<%= name %>\"><%= name %></option>"
+            "<option name=\"<%= name %>\"><%= name %></option>"
           <% end %> +
         "</select>" +
       "</td>" +
@@ -30,8 +30,8 @@ $(document).ready(function() {
  
   });
 
-  $("#user_languages").change(function() {
-    $("#native-lang").html($("#user_languages option:selected").text());
+  $("#user_first_language").change(function() {
+    $("#native-lang").html($("#user_first_language option:selected").text());
   });
 
   $(document).on('click', ".remove-lang", function(e) {

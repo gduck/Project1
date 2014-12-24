@@ -1,7 +1,7 @@
 <div>
 <!-- This is the view -->
   
-  <%= form_for @user, :method => :post do |user_form| %>
+  <%= form_for @user, remote: true, :method => :post do |user_form| %>
 
   <form id="edit-user" name="edit-form" class="form-class" accept-charset="UTF-8" autocomplete="off" method="post">
     <header class="info">
@@ -12,12 +12,11 @@
         <label class="desc">Name<span id="req_1" class="req">*</span></label>
         <span>
           <%= user_form.text_field :first_name, :type => "text", :class =>"field text", :tabindex =>"1", :required => true %>
-          <!-- <input id="first-name" name="first-name-field" type="text" class="field text" value size="8" tabindex="1" required> -->
+
           <label for="first-name">First</label>
         </span>
         <span>
           <%= user_form.text_field :last_name, :type => "text", :class =>"field text", :tabindex =>"2", :required => true %>
-          <!-- <input id="last-name" name="last-name-field" type="text" class="field text" value size="8" tabindex="2" required> -->
           <label for="last-name">Last</label>
         </span>      
       </li>
@@ -37,25 +36,14 @@
           <span class="margin-btm">First language: </span><span id="native-lang">English</span>
         </div>
         <div>
-          <%= user_form.select(:languages) do%>
-            <% @languages.each do |lang| %>
-
-          <!-- <select id="native-lang-select" name="native-language-select" class="field select" onclick="handleInput(this);" tabindex="4" required> -->
-              <%= content_tag(:option, lang.name, value: lang.id) %>
-              <!-- <option value=<%= lang.id %>><%= lang.name %></option> -->
-            <% end %>
-          <% end %>
-          </select>
+          <!-- a better way to fill a select form -->
+          <%= user_form.collection_select(:first_language, @languages, :id, :name, {:class => "firstlang-select"}) %>
         </div>
       </li>
       <li class="rightHalf">
         <div class="row full">
           <label class="wide" id="other-lang-lbl">Are you multilingual?</label>
-          <select id="other-lang-select" name="other-language-select" class="field select" tabindex="5">
-              <% @languages.each do |lang| %>
-                <option value=<%= lang.id %>><%= lang.name %></option>
-              <% end %>
-          </select>
+          <%= user_form.collection_select(:languages, @languages, :id, :name, {:include_blank => "Choose another"}) %>
         </div>
         <div>
           <table>
