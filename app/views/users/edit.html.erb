@@ -11,13 +11,13 @@
       <li>
         <label class="desc">Name<span id="req_1" class="req">*</span></label>
         <span>
-          <%= user_form.text_field :first_name %>
-          <input id="first-name" name="first-name-field" type="text" class="field text" value size="8" tabindex="1" required>
+          <%= user_form.text_field :first_name, :type => "text", :class =>"field text", :tabindex =>"1", :required => true %>
+          <!-- <input id="first-name" name="first-name-field" type="text" class="field text" value size="8" tabindex="1" required> -->
           <label for="first-name">First</label>
         </span>
         <span>
-          <%= user_form.text_field :last_name %>
-          <input id="last-name" name="last-name-field" type="text" class="field text" value size="8" tabindex="2" onkeyup="handleInput(this);" onchange="handleInput(this);" required>
+          <%= user_form.text_field :last_name, :type => "text", :class =>"field text", :tabindex =>"2", :required => true %>
+          <!-- <input id="last-name" name="last-name-field" type="text" class="field text" value size="8" tabindex="2" required> -->
           <label for="last-name">Last</label>
         </span>      
       </li>
@@ -25,7 +25,7 @@
         <label class="desc">Address<span id="req_2" class="req">*</span></label>
         <div>
           <span class="address-area full">
-            <input id="address" name="address-field" type="text" class="field text full" value size="8" tabindex="3" onkeyup="handleInput(this);" onchange="handleInput(this);" required>
+            <input id="address" name="address-field" type="text" class="field text wide" value size="8" tabindex="3" onkeyup="handleInput(this);" onchange="handleInput(this);" required>
             <label for="address">Area (HK Island, Kowloon, NT)</label>
           </span>
         </div>
@@ -37,10 +37,14 @@
           <span class="margin-btm">First language: </span><span id="native-lang">English</span>
         </div>
         <div>
-          <select id="native-lang-select" name="native-language-select" class="field select" onclick="handleInput(this);" tabindex="4" required>
+          <%= user_form.select(:languages) do%>
             <% @languages.each do |lang| %>
-              <option value=<%= lang.id %>><%= lang.name %></option>
+
+          <!-- <select id="native-lang-select" name="native-language-select" class="field select" onclick="handleInput(this);" tabindex="4" required> -->
+              <%= content_tag(:option, lang.name, value: lang.id) %>
+              <!-- <option value=<%= lang.id %>><%= lang.name %></option> -->
             <% end %>
+          <% end %>
           </select>
         </div>
       </li>

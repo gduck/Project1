@@ -30,8 +30,8 @@ $(document).ready(function() {
  
   });
 
-  $("#native-lang-select").change(function() {
-    $("#native-lang").html($("#native-lang-select option:selected").text());
+  $("#user_languages").change(function() {
+    $("#native-lang").html($("#user_languages option:selected").text());
   });
 
   $(document).on('click', ".remove-lang", function(e) {
