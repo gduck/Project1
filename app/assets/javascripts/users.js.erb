@@ -14,8 +14,8 @@ $(document).ready(function() {
     console.log("New language selected: ", language)
 
     $('#other-lang').append(
-      "<tr>" +
-      "<td class=\"other-lang-list\" class=\"wide\">" +language +"</td>"+
+      "<tr class=\"full\">" +
+      "<td class=\"other-lang-list\">" +language +"</td>"+
       "<td class=\"prof-selection\" >"+
         "<select id=\"prof-select\" name=\"proficiency-select\" class=\"field select\"" +
         "tabindex=\"5\" required>" 
@@ -24,7 +24,7 @@ $(document).ready(function() {
           <% end %> +
         "</select>" +
       "</td>" +
-      "<td class=\"remove-lang\">Remove</td>"+
+      "<td class=\"remove-lang\"><a href=\"#\">Remove</a></td>"+
       "</tr>"
       );
  
@@ -34,6 +34,10 @@ $(document).ready(function() {
     $("#native-lang").html($("#native-lang-select option:selected").text());
   });
 
+  $(document).on('click', ".remove-lang", function(e) {
+    e.preventDefault();
+    $(this).parent().remove();
+  });
 
 
 
