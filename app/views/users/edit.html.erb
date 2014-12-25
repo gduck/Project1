@@ -56,8 +56,8 @@
                   </td>
                   <td>
                     <%= user_form.collection_select(:prof_categories, @categories, :id, :prof_name, {:selected => lprof.prof_category.id}) %>
-
                   </td>
+                  <td class="remove-lang"><a href="#">Remove</a></td>
                 </tr>
               <% end %>
 
