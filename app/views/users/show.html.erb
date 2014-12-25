@@ -19,6 +19,7 @@
 
       <tr>
         <td>
+          <%= @user.first_language %><br>
           <% @user.languages.each do |lang| %>
             <%= lang.name  %>
           <br>
@@ -26,6 +27,7 @@
         </td>
 
         <td>
+          First language<br>
           <% @user.prof_categories.each do |lprof| %>
             <%= lprof.prof_name  %>
             <br>
