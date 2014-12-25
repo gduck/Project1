@@ -22,7 +22,7 @@ $(document).ready(function() {
   var drawLanguage = function(language, languageID) {
     $('#other-lang').append(
       "<tr class=\"full\" name=\""+language+"\" value=\""+ languageID +"\" >" +
-      "<td class=\"other-lang-list\">" +language +"</td>"+
+      "<td class=\"other-lang-list\" >" +language +"</td>"+
       "<td class=\"prof-selection\" >"+
         "<select class=\"prof-select\" name=\""+language+"\" class=\"field select\"" +
         "tabindex=\"5\"  required>" 
@@ -37,13 +37,16 @@ $(document).ready(function() {
   }
 
   $("#user_first_language").change(function() {
+    // set the label to display the current first language
     $("#native-lang").html($("#user_first_language option:selected").text());
 
+    // disable the language in the other list
     var nativeLangID = parseInt($("#user_first_language option:selected").val());
 
     $("option[value="+nativeLangID+"]")
       .attr("disabled", "disabled")
       .siblings().removeAttr("disabled");
+
   });
 
   $(document).on('click', ".remove-lang", function(e) {

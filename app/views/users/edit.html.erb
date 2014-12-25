@@ -48,22 +48,19 @@
         <div>
           <table>
             <tbody id="other-lang">
-              <tr>
-                <td>
-                  <% @user.languages.each do |lang| %>
-                    <%= lang.name  %>
-                    <br>
-                  <% end %>
-                </td>
 
-                <td>
-                  <% @user.prof_categories.each do |lprof| %>
-                    <%= user_form.collection_select(:prof_categories, @categories, :id, :prof_name, {:selected => lprof.id}) %>
-                    <%#= lprof.prof_name  %>
-                    <br>
-                  <% end %>
-                </td>
-              </tr>
+              <% @user.language_profs.each do |lprof| %>
+                <tr>
+                  <td data-langID="<%= lprof.language.id %>">
+                    <%= lprof.language.name  %>
+                  </td>
+                  <td>
+                    <%= user_form.collection_select(:prof_categories, @categories, :id, :prof_name, {:selected => lprof.prof_category.id}) %>
+
+                  </td>
+                </tr>
+              <% end %>
+
             </tbody>
           </table>
           
