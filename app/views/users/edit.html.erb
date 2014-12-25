@@ -58,7 +58,8 @@
 
                 <td>
                   <% @user.prof_categories.each do |lprof| %>
-                    <%= lprof.prof_name  %>
+                    <%= user_form.collection_select(:prof_categories, @categories, :id, :prof_name, {:selected => lprof.id}) %>
+                    <%#= lprof.prof_name  %>
                     <br>
                   <% end %>
                 </td>
