@@ -22,7 +22,7 @@ $(document).ready(function() {
   var drawLanguage = function(language, languageID) {
     $('#other-lang').append(
       "<tr class=\"full\" name=\""+language+"\" value=\""+ languageID +"\" >" +
-      "<td class=\"other-lang-list\" >" +language +"</td>"+
+      "<td data-langid=\""+languageID+"\" >" +language +"</td>"+
       "<td class=\"prof-selection\" >"+
         "<select class=\"prof-select\" name=\""+language+"\" class=\"field select\"" +
         "tabindex=\"5\"  required>" 
@@ -36,32 +36,63 @@ $(document).ready(function() {
     );
   }
 
-  $("#user_first_language").change(function() {
-    // set the label to display the current first language
-    $("#native-lang").html($("#user_first_language option:selected").text());
+  var removeAllDisabled = function() {
+    $("select[id='user_languages'] option").map(function() {
+      $(this).removeAttr("disabled", "disabled");
+    });
+      
+    $("select[id='user_first_language'] option").map(function() {
+      $(this).removeAttr("disabled", "disabled");
+    });
+  }
 
+  var addDisabled = function(value) {
+    $("option[value="+value+"]")
+      .attr("disabled", "disabled")
+  }
+
+  $("#user_first_language").change(function() {
+    $("#native-lang").html($("#user_first_language option:selected").text());
+  });
+
+  $("#user_first_language").on('focus', function() {
+    // set the label to display the current first language
+    
     // disable the language in the other list
     var nativeLangID = parseInt($("#user_first_language option:selected").val());
+    var languageIDs = $('#other-lang td').map(function() {
+      return $(this).attr("data-langid");
+    }).get();
 
-    $("option[value="+nativeLangID+"]")
-      .attr("disabled", "disabled")
-      .siblings().removeAttr("disabled");
-
+    removeAllDisabled();
+    addDisabled(nativeLangID);
+    for (i = 0; i < languageIDs.length; i++) {
+      addDisabled(languageIDs[i]);
+    };
   });
 
-  $(document).on('click', ".remove-lang", function(e) {
-    e.preventDefault();
-    $(this).parent().remove();
-  });
 
   $("#user_languages").on('focus', function(e) {
     e.preventDefault();
-    console.log("focus function called");
-    var nativeLangID = parseInt($("#user_first_language option:selected").val());
 
-    $("option[value="+nativeLangID+"]")
-      .attr("disabled", "disabled")
-      .siblings().removeAttr("disabled");
+    var nativeLangID = parseInt($("#user_first_language option:selected").val());
+    // need to return an array of values
+    var languageIDs = $('#other-lang td').map(function() {
+      return $(this).attr("data-langid");
+    }).get();
+    console.log(languageIDs);
+
+    removeAllDisabled();
+    addDisabled(nativeLangID);
+    for (i = 0; i < languageIDs.length; i++) {
+      addDisabled(languageIDs[i]);
+    };
+  });
+
+  // for removing an other language
+  $(document).on('click', ".remove-lang", function(e) {
+    e.preventDefault();
+    $(this).parent().remove();
   });
 
 
