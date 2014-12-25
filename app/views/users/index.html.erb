@@ -39,9 +39,8 @@
                   </td>
 
                   <td>
-                    <% user.language_profs.each do |lprof| %>
-                      <%= $prof_name[lprof.language_proficiency]  %>
-
+                    <% user.prof_categories.each do |lprof| %>
+                      <%= lprof.prof_name  %>
                       <br>
                     <% end %>
                   </td>

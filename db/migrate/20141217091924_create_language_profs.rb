@@ -4,7 +4,7 @@ class CreateLanguageProfs < ActiveRecord::Migration
       
       t.integer :user_id
       t.integer :language_id
-      t.integer :language_proficiency
+      t.integer :prof_category_id
 
       t.timestamps
     end

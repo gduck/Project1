@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
   #has_many :languages
   has_many :language_profs
   has_many :languages, through: :language_profs
+  has_many :prof_categories, through: :language_profs
 end

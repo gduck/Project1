@@ -1,0 +1,2 @@
+class ProfCategoriesController < ApplicationController
+end

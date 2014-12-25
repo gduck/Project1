@@ -13,7 +13,7 @@ namespace :import_databases do
     end
   end
 
-    task :import_profs => :environment do
+  task :import_profs => :environment do
     require 'csv'    
 
     csv_text = File.read('lib/tasks/Languages_prof.csv')
@@ -22,6 +22,18 @@ namespace :import_databases do
     csv.each do |row|
       puts ">>>>>>>> #{row.to_hash}"
       LanguageProf.create!(row.to_hash)
+    end
+  end
+
+  task :import_profnames => :environment do
+    require 'csv'   
+
+    csv_text = File.read('lib/tasks/Prof_names.csv')
+    csv = CSV.parse(csv_text, :headers => true)
+
+    csv.each do |row|
+      puts ">>>>>>>> #{row.to_hash}"
+      ProfCategory.create!(row.to_hash)
     end
   end
 
