@@ -95,6 +95,10 @@ $(document).ready(function() {
     $(this).parent().remove();
   });
 
+  $('#user_prof_categories').change( function() {
+    $.put('/language_profs/update', {term: $('option:selected', this).val()});
+  });
+
 
 });
 

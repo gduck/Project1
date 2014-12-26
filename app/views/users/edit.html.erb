@@ -50,14 +50,18 @@
             <tbody id="other-lang">
 
               <% @user.language_profs.each do |lprof| %>
-                <tr>
-                  <td data-langID="<%= lprof.language.id %>">
+                <tr data-profID="<%= lprof.id %>">
+                  <td><%= check_box_tag "prof_ids[]", lprof.id %></td>
+                  <td>
                     <%= lprof.language.name  %>
                   </td>
+                  
                   <td>
                     <%= user_form.collection_select(:prof_categories, @categories, :id, :prof_name, {:selected => lprof.prof_category.id}) %>
                   </td>
-                  <td class="remove-lang"><a href="#">Remove</a></td>
+                  <td class="remove-lang">
+                  <%= link_to "Remove", lprof, :confirm => "Are you sure?", :method => :delete %>
+                  </td>
                 </tr>
               <% end %>
 
@@ -71,8 +75,9 @@
 
 
   </form>
-  <div class="btn-group"><button class="btn btn-default" type="button">
-    <%= user_form.submit "Submit" %></button>
+  <div class="btn-group">
+    <%= user_form.text_field :user_id, :value =>@user.id, :hidden => true%>
+    <%= user_form.submit "Submit", :class => "btn btn-default", :type => 'submit', :id => 'user_edit', :'data-id' => @user.id  %>
     <%= flash[:message] %>
   </div>
   <% end %>
