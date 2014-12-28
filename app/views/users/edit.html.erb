@@ -43,13 +43,14 @@
       <li class="rightHalf">
         <div class="row full">
           <label class="wide" id="other-lang-lbl">Are you multilingual?</label>
-          <%= user_form.collection_select(:languages, @languages, :id, :name, {:include_blank => "Choose another"}) %>
+          <!-- thinking this is tied to user, shouldn't be. js render can be put into db -->
+          <%= user_form.collection_select(:language_profs, @languages, :id, :name, {:include_blank => "Choose another"}) %>
         </div>
         
         <div>
           <table>
             <tbody id="other-lang">
-
+              <%# user_form.fields_for :language_profs do |builder|%>
               <% @user.language_profs.each do |lprof| %>
                 <tr data-profID="<%= lprof.id %>">
                   <!-- <td><%#= check_box_tag "prof_ids[]", lprof.id %></td> -->
@@ -58,7 +59,7 @@
                   </td>
                   
                   <td>
-                    <%= user_form.collection_select(:prof_categories, @categories, :id, :prof_name, {:selected => lprof.prof_category.id}) %>
+                    <%= user_form.collection_select(:language_profs, @categories, :id, :prof_name, {:selected => lprof.prof_category.id}) %>
                   </td>
                   <td class="remove-lang">
                   <%= link_to "Remove", lprof, data: {:confirm => "Are you sure?"}, :method => :delete %>
@@ -68,13 +69,9 @@
 
             </tbody>
           </table>
-          
         </div>
       </li>
-
       </ul>
-
-
   
   <div class="btn-group">
     <%= user_form.text_field :user_id, :value =>@user.id, :hidden => true%>
@@ -82,17 +79,7 @@
     <%= flash[:message] %>
   </div>
   <% end %>
-
-
-
-
 </div>
-
-
-
-
-
-
 
 
 

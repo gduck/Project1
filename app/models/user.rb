@@ -8,5 +8,5 @@ class User < ActiveRecord::Base
   has_many :languages, through: :language_profs
   has_many :prof_categories, through: :language_profs
 
-  accepts_nested_attributes_for :language_profs
+  accepts_nested_attributes_for :language_profs, allow_destroy: true
 end

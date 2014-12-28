@@ -75,6 +75,8 @@ $(document).ready(function() {
   $("#user_languages").on('focus', function(e) {
     e.preventDefault();
 
+    console.log("focus function called");
+
     var nativeLangID = parseInt($("#user_first_language option:selected").val());
     // need to return an array of values
     var languageIDs = $('#other-lang td').map(function() {
@@ -95,9 +97,7 @@ $(document).ready(function() {
     $(this).parent().remove();
   });
 
-  $('#user_prof_categories').change( function() {
-    $.put('/language_profs/update', {term: $('option:selected', this).val()});
-  });
+  
 
 
 });

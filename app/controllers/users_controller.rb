@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   def update
 
     lang = Language.find(user_params[:first_language]).name
-    puts ">>>>>>>>>>>>lang is #{lang}"
+    puts ">>>>>>>>>>>>langprofs is #{user_params[:language_profs]}"
     if @user.update_attributes({
       :first_name => user_params[:first_name],
       :last_name => user_params[:last_name],
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.required(:user).permit(:first_name, :last_name, :first_language)
+    params.required(:user).permit(:id, :first_name, :last_name, :first_language, :language_profs)
   end
 
 end
