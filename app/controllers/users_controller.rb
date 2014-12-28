@@ -35,11 +35,11 @@ class UsersController < ApplicationController
 
   def update
 
-    lang = Language.find(params[:user][:first_language]).name
+    lang = Language.find(user_params[:first_language]).name
     puts ">>>>>>>>>>>>lang is #{lang}"
     if @user.update_attributes({
-      :first_name => params[:user][:first_name],
-      :last_name => params[:user][:last_name],
+      :first_name => user_params[:first_name],
+      :last_name => user_params[:last_name],
       :first_language => lang})
       flash[:notice] = "Details updated"
       redirect_to :action => 'show', :id => @user
@@ -48,8 +48,12 @@ class UsersController < ApplicationController
       redirect_to :back
     end
 
+    
   end
 
-  
+  private
+  def user_params
+    params.required(:user).permit(:first_name, :last_name, :first_language)
+  end
 
 end

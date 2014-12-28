@@ -33,17 +33,17 @@
       <li class="leftHalf">
         <label class="desc" id="native-lang-lbl">Native Language<span id="req_1" class="req">*</span></label>
         <div class="full">
-          <span class="margin-btm">First language: </span><span id="native-lang">English</span>
+          <span class="margin-btm">First language: </span><span id="native-lang"><%= @user.first_language %></span>
         </div>
         <div>
           <!-- a better way to fill a select form -->
-          <%= user_form.collection_select(:first_language, @languages, :id, :name, {:class => "firstlang-select"}) %>
+          <%= user_form.collection_select(:first_language, @languages, :id, :name, {:selected => @languages.find_by_name(@user.first_language).id}) %>
         </div>
       </li>
       <li class="rightHalf">
         <div class="row full">
           <label class="wide" id="other-lang-lbl">Are you multilingual?</label>
-          <%#= user_form.collection_select(:languages, @languages, :id, :name, {:include_blank => "Choose another"}) %>
+          <%= user_form.collection_select(:languages, @languages, :id, :name, {:include_blank => "Choose another"}) %>
         </div>
         
         <div>
@@ -53,12 +53,12 @@
               <% @user.language_profs.each do |lprof| %>
                 <tr data-profID="<%= lprof.id %>">
                   <!-- <td><%#= check_box_tag "prof_ids[]", lprof.id %></td> -->
-                  <td>
+                  <td data-langID="<%= lprof.language_id %>">
                     <%= lprof.language.name  %>
                   </td>
                   
                   <td>
-                    <%#= user_form.collection_select(:prof_categories, @categories, :id, :prof_name, {:selected => lprof.prof_category.id}) %>
+                    <%= user_form.collection_select(:prof_categories, @categories, :id, :prof_name, {:selected => lprof.prof_category.id}) %>
                   </td>
                   <td class="remove-lang">
                   <%= link_to "Remove", lprof, data: {:confirm => "Are you sure?"}, :method => :delete %>
