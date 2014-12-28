@@ -1,9 +1,9 @@
 <div>
 <!-- This is the view -->
   
-  <%= form_for @user, remote: true, :method => :post do |user_form| %>
+  <%= form_for @user, :action => 'update', :id => @user, :method => :put do |user_form| %>
 
-  <form id="edit-user" name="edit-form" class="form-class" accept-charset="UTF-8" autocomplete="off" method="post">
+  <!-- <form id="edit-user" name="edit-form" class="form-class" accept-charset="UTF-8" autocomplete="off" method="post"> -->
     <header class="info">
       <h2>Edit details for <%= @user.email %></h2>
     </header>
@@ -24,7 +24,7 @@
         <label class="desc">Address<span id="req_2" class="req">*</span></label>
         <div>
           <span class="address-area full">
-            <input id="address" name="address-field" type="text" class="field text wide" value size="8" tabindex="3" onkeyup="handleInput(this);" onchange="handleInput(this);" required>
+            <input id="address_area" name="address_area" type="text" class="field text wide" value size="8" tabindex="3">
             <label for="address">Area (HK Island, Kowloon, NT)</label>
           </span>
         </div>
@@ -43,24 +43,25 @@
       <li class="rightHalf">
         <div class="row full">
           <label class="wide" id="other-lang-lbl">Are you multilingual?</label>
-          <%= user_form.collection_select(:languages, @languages, :id, :name, {:include_blank => "Choose another"}) %>
+          <%#= user_form.collection_select(:languages, @languages, :id, :name, {:include_blank => "Choose another"}) %>
         </div>
+        
         <div>
           <table>
             <tbody id="other-lang">
 
               <% @user.language_profs.each do |lprof| %>
                 <tr data-profID="<%= lprof.id %>">
-                  <td><%= check_box_tag "prof_ids[]", lprof.id %></td>
+                  <!-- <td><%#= check_box_tag "prof_ids[]", lprof.id %></td> -->
                   <td>
                     <%= lprof.language.name  %>
                   </td>
                   
                   <td>
-                    <%= user_form.collection_select(:prof_categories, @categories, :id, :prof_name, {:selected => lprof.prof_category.id}) %>
+                    <%#= user_form.collection_select(:prof_categories, @categories, :id, :prof_name, {:selected => lprof.prof_category.id}) %>
                   </td>
                   <td class="remove-lang">
-                  <%= link_to "Remove", lprof, :confirm => "Are you sure?", :method => :delete %>
+                  <%= link_to "Remove", lprof, data: {:confirm => "Are you sure?"}, :method => :delete %>
                   </td>
                 </tr>
               <% end %>
@@ -74,10 +75,10 @@
       </ul>
 
 
-  </form>
+  
   <div class="btn-group">
     <%= user_form.text_field :user_id, :value =>@user.id, :hidden => true%>
-    <%= user_form.submit "Submit", :class => "btn btn-default", :type => 'submit', :id => 'user_edit', :'data-id' => @user.id  %>
+    <%= user_form.submit "Submit", :class => "btn btn-default", :type => 'submit', :id => 'user_edit' %>
     <%= flash[:message] %>
   </div>
   <% end %>

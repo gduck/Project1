@@ -4,6 +4,7 @@
   <span>
     <%= @user.email %>
   </span>
+  <div> Name: <%= "#{@user.first_name} #{@user.last_name}"%></div>
   <span>
     <%= link_to "edit", edit_user_path %>
   </span>

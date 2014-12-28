@@ -25,13 +25,31 @@ class UsersController < ApplicationController
 
 
   def show
-    #@user = User.find(params[:id]) 
+    
   end
 
   def edit
     @languages = Language.all
     @categories = ProfCategory.all
-    #@first_language = Language.find_by name: @user.first_language
   end
+
+  def update
+
+    lang = Language.find(params[:user][:first_language]).name
+    puts ">>>>>>>>>>>>lang is #{lang}"
+    if @user.update_attributes({
+      :first_name => params[:user][:first_name],
+      :last_name => params[:user][:last_name],
+      :first_language => lang})
+      flash[:notice] = "Details updated"
+      redirect_to :action => 'show', :id => @user
+    else
+      flash[:notice] = "There was a problem updating user"
+      redirect_to :back
+    end
+
+  end
+
+  
 
 end
