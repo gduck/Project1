@@ -22,7 +22,7 @@ $(document).ready(function() {
       "<td class=\"prof-selection\" >"+
         "<select class=\"prof-select\" name=\""+language+"\" class=\"field select\"" +
         "tabindex=\"5\"  required>" 
-          <% $prof_name.each do |name| %> +
+        <%# $prof_name.each do |name| %>"temporary text" +
             "<option name=\"<%= name %>\"><%= name %></option>"
           <% end %> +
         "</select>" +
