@@ -61,35 +61,12 @@
             <tbody id="other-lang">
 
               <%= user_form.fields_for :language_profs, @user.language_profs do |builder| %>
-                <tr>
-                  <td>
-                    <%= builder.label :language_id, "#{builder.object.language.name}" %>
-                  </td>
-                  <td>
-                    <%= builder.collection_select(:prof_category_id, @categories, :id, :prof_name, {:selected => builder.object.prof_category.id}) %>
-                  </td>
-                  <td>
-                    <%= builder.check_box :_destroy%>
-                    <%= builder.label :_destroy, "Remove" %> 
-                  </td>
-                </tr>
+                <!-- <tr> -->
+                  <%= render "langprof", :f => builder %>
+                <!-- </tr> -->
               <% end %>
 
 
-              <%# @user.language_profs.each do |lprof| %>
-                <!-- <tr data-profID="<%#= lprof.id %>">
-                   <td><%#= check_box_tag "prof_ids[]", lprof.id %></td> 
-                  <td data-langID="<%#= lprof.language_id %>">
-                    <%#= lprof.language.name  %>
-                  </td>
-                  
-                  <td>
-                    <%#= user_form.collection_select(:language_profs, @categories, :id, :prof_name, {:selected => lprof.prof_category.id}) %>
-                  </td>
-                  <td class="remove-lang">
-                  <%#= link_to "Remove", lprof, data: {:confirm => "Are you sure?"}, :method => :delete %>
-                  </td>
-                </tr> -->
 
             </tbody>
           </table>

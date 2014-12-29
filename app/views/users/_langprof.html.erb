@@ -1,11 +1,12 @@
-    
-    <span class="remove-lang">Remove</span>
-    <span class="other-lang-list" class="wide"><%= language %></span>
-    <span class="prof-selection" >
-      <select id="prof-select" name="proficiency-select" class="field select" onclick="handleInput(this);" tabindex="5" required>
-        <% $prof_name.each do |name| %>
-          <option value=<%= name %>><%= name %></option>
-        <% end %>
-      </select>
-    </span>
-    
+<tr class="fields">
+  <td data-langID="<%= f.object.language_id %>">
+    <%= f.label :language_id, "#{f.object.language.name}" %>
+  </td>
+  <td>
+    <%= f.collection_select(:prof_category_id, @categories, :id, :prof_name, {:selected => f.object.prof_category.id}) %>
+    <%= f.hidden_field :_destroy, {:class => "killme"} %>
+    <!-- link_to_putanythinghere doesn't work -->
+    <%#= link_to_remove_fields "Remove", f %> 
+    <%= link_to "Remove", "javascript:", :onclick => "remove_fields(this);" %> 
+  </td>
+</tr>

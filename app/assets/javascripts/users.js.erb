@@ -3,22 +3,18 @@
 
 $(document).ready(function() {
 
-  var handleInput = function() {
-    console.log("handleInput called");
-  }
 
+  // draw the new language selected
+  $("#user_language_profs").change(function() {
 
-
-  $("#user_languages").change(function() {
-
-    var language = $("#user_languages option:selected").text();
-    var languageID = $("#user_languages option:selected").val();
+    var language = $("#user_language_profs option:selected").text();
+    var languageID = $("#user_language_profs option:selected").val();
     console.log("New language selected: ", language)
     drawLanguage(language, languageID);
 
 
     });
-
+  // the horrible html I must change to ruby form helpers
   var drawLanguage = function(language, languageID) {
     $('#other-lang').append(
       "<tr class=\"full\" name=\""+language+"\" value=\""+ languageID +"\" >" +
@@ -36,8 +32,9 @@ $(document).ready(function() {
     );
   }
 
+  // disabled already selected languages from the list
   var removeAllDisabled = function() {
-    $("select[id='user_languages'] option").map(function() {
+    $("select[id='user_language_profs'] option").map(function() {
       $(this).removeAttr("disabled", "disabled");
     });
       
@@ -45,24 +42,27 @@ $(document).ready(function() {
       $(this).removeAttr("disabled", "disabled");
     });
   }
-
   var addDisabled = function(value) {
     $("option[value="+value+"]")
       .attr("disabled", "disabled")
   }
 
+  // change the text of which first language is selected
   $("#user_first_language").change(function() {
     $("#native-lang").html($("#user_first_language option:selected").text());
   });
 
+  // do some restricting of available language options
   $("#user_first_language").on('focus', function() {
-    // set the label to display the current first language
     
     // disable the language in the other list
     var nativeLangID = parseInt($("#user_first_language option:selected").val());
+    console.log("native lang is " + nativeLangID);
+    
     var languageIDs = $('#other-lang td').map(function() {
       return $(this).attr("data-langid");
     }).get();
+    console.log("other langs "+ languageIDs);
 
     removeAllDisabled();
     addDisabled(nativeLangID);
@@ -70,13 +70,10 @@ $(document).ready(function() {
       addDisabled(languageIDs[i]);
     };
   });
-
-
-  $("#user_languages").on('focus', function(e) {
+  // must change the list if either drop down box changes
+  $("#user_language_profs").on('focus', function(e) {
     e.preventDefault();
-
     console.log("focus function called");
-
     var nativeLangID = parseInt($("#user_first_language option:selected").val());
     // need to return an array of values
     var languageIDs = $('#other-lang td').map(function() {
@@ -91,7 +88,7 @@ $(document).ready(function() {
     };
   });
 
-  // for removing an other language
+  // for removing an 'other' language
   $(document).on('click', ".remove-lang", function(e) {
     e.preventDefault();
     $(this).parent().remove();

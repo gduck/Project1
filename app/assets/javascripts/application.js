@@ -15,4 +15,7 @@
 //= require_tree .
 //= require bootstrap
 
-
+ function remove_fields(link) {
+    var x = $(link).prev(".killme").val(1);
+    var y = $(link).closest(".fields").hide();
+  };
