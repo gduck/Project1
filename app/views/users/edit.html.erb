@@ -1,8 +1,17 @@
 <div>
 <!-- This is the view -->
   
-  <%= form_for @user, :action => 'update', :id => @user, :method => :put do |user_form| %>
-
+  <%= form_for @user  do |user_form| %>
+    <% if @user.errors.any? %>
+      <div class="error_messages">
+        <h2><%= pluralize.(@user.errors.count, "error")%> prohibited this from being saved</h2>
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   <!-- <form id="edit-user" name="edit-form" class="form-class" accept-charset="UTF-8" autocomplete="off" method="post"> -->
     <header class="info">
       <h2>Edit details for <%= @user.email %></h2>
@@ -50,22 +59,36 @@
         <div>
           <table>
             <tbody id="other-lang">
-              <%# user_form.fields_for :language_profs do |builder|%>
               <% @user.language_profs.each do |lprof| %>
-                <tr data-profID="<%= lprof.id %>">
-                  <!-- <td><%#= check_box_tag "prof_ids[]", lprof.id %></td> -->
-                  <td data-langID="<%= lprof.language_id %>">
-                    <%= lprof.language.name  %>
+                <tr>
+                <%= fields_for :language_profs do |builder| %>
+
+              <%#= user_form.fields_for :language_profs do |builder| %>
+                  <td>
+                    <%= builder.label :language_id, "#{lprof.language.name}" %>
                   </td>
-                  
                   <td>
                     <%= user_form.collection_select(:language_profs, @categories, :id, :prof_name, {:selected => lprof.prof_category.id}) %>
                   </td>
-                  <td class="remove-lang">
-                  <%= link_to "Remove", lprof, data: {:confirm => "Are you sure?"}, :method => :delete %>
-                  </td>
+                <% end %>
                 </tr>
               <% end %>
+
+
+              <%# @user.language_profs.each do |lprof| %>
+                <!-- <tr data-profID="<%#= lprof.id %>">
+                   <td><%#= check_box_tag "prof_ids[]", lprof.id %></td> 
+                  <td data-langID="<%#= lprof.language_id %>">
+                    <%#= lprof.language.name  %>
+                  </td>
+                  
+                  <td>
+                    <%#= user_form.collection_select(:language_profs, @categories, :id, :prof_name, {:selected => lprof.prof_category.id}) %>
+                  </td>
+                  <td class="remove-lang">
+                  <%#= link_to "Remove", lprof, data: {:confirm => "Are you sure?"}, :method => :delete %>
+                  </td>
+                </tr> -->
 
             </tbody>
           </table>
