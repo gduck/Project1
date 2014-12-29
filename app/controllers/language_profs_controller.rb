@@ -20,8 +20,8 @@ class LanguageProfsController < ApplicationController
   def update
     @lang_prof = LanguageProf.find(params[:id])
     if @lang_prof.update_attributes(
-      :language_id => langprofs_params[:language_id],
-      :prof_category_id => langprofs_params[:prof_category_id])
+      :language_id => params[:language_id],
+      :prof_category_id => params[:prof_category_id])
       flash[:notice] = "Language updated!"
       redirect_to :back
     else
@@ -30,9 +30,9 @@ class LanguageProfsController < ApplicationController
     end
   end
 
-  protected
-  def langprofs_params
-    params.required(:language_prof).permit( :language_id, :prof_category_id)
-  end
+  # protected
+  # def langprofs_params
+  #   params.required(:language_prof).permit( :language_id, :prof_category_id)
+  # end
 
 end

@@ -22,22 +22,15 @@ class UsersController < ApplicationController
   end
 
   def new
-    # this is only here because I'm having trouble with nested forms
-    @user = User.new
-    @user.build_language_prof
-    #langprof = @user.build_language_prof
   end
 
 
   def show
-    
   end
 
   def edit
     @languages = Language.all
     @categories = ProfCategory.all
-    #@user = User.find(params[:id])
-    #@user.build_language_prof
     puts ">>>>>>>> in edit, user params is #{params}"
     puts ">>>>>>> in edit, langprofs is #{@user.language_profs}"
   end
@@ -47,10 +40,15 @@ class UsersController < ApplicationController
     lang = Language.find(user_params[:first_language]).name
     puts ">>>>>>>>>>>>langprofs in params is #{user_params[:language_profs]}"
     puts ">>>>>> @user.langprofs is #{@user.language_profs}"
-    if @user.update_attributes({
+    if @user.update_attributes(
+      {
       :first_name => user_params[:first_name],
       :last_name => user_params[:last_name],
-      :first_language => lang})
+      :first_language => lang,
+      :language_profs_attributes => user_params[:language_profs_attributes]
+
+      })
+
       flash[:notice] = "Details updated"
       redirect_to :action => 'show', :id => @user
     else
@@ -63,7 +61,7 @@ class UsersController < ApplicationController
 
   protected
   def user_params
-    params.required(:user).permit(:id, :first_name, :last_name, :first_language, language_prof: [ :user_id, :language_id, :prof_category_id])
+    params.required(:user).permit(:id, :first_name, :last_name, :first_language, :language_profs_attributes => [:id, :prof_category_id, :language_id])
   end
 
 end

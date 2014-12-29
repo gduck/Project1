@@ -59,18 +59,19 @@
         <div>
           <table>
             <tbody id="other-lang">
-              <% @user.language_profs.each do |lprof| %>
-                <tr>
-                <%= fields_for :language_profs do |builder| %>
 
-              <%#= user_form.fields_for :language_profs do |builder| %>
+              <%= user_form.fields_for :language_profs, @user.language_profs do |builder| %>
+                <tr>
                   <td>
-                    <%= builder.label :language_id, "#{lprof.language.name}" %>
+                    <%= builder.label :language_id, "#{builder.object.language.name}" %>
                   </td>
                   <td>
-                    <%= user_form.collection_select(:language_profs, @categories, :id, :prof_name, {:selected => lprof.prof_category.id}) %>
+                    <%= builder.collection_select(:prof_category_id, @categories, :id, :prof_name, {:selected => builder.object.prof_category.id}) %>
                   </td>
-                <% end %>
+                  <td>
+                    <%= builder.check_box :_destroy%>
+                    <%= builder.label :_destroy, "Remove" %> 
+                  </td>
                 </tr>
               <% end %>
 
