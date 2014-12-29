@@ -15,21 +15,21 @@ $(document).ready(function() {
 
     });
   // the horrible html I must change to ruby form helpers
-  var drawLanguage = function(language, languageID) {
-    $('#other-lang').append(
-      "<tr class=\"full\" name=\""+language+"\" value=\""+ languageID +"\" >" +
-      "<td data-langid=\""+languageID+"\" >" +language +"</td>"+
-      "<td class=\"prof-selection\" >"+
-        "<select class=\"prof-select\" name=\""+language+"\" class=\"field select\"" +
-        "tabindex=\"5\"  required>" 
-        <%# $prof_name.each do |name| %>"temporary text" +
-            "<option name=\"<%= name %>\"><%= name %></option>"
-          <%# end %> +
-        "</select>" +
-      "</td>" +
-      "<td class=\"remove-lang\"><a href=\"#\">Remove</a></td>"+
-      "</tr>"
-    );
+   var drawLanguage = function(language, languageID) {
+  //   $('#other-lang').append(
+  //     "<tr class=\"full\" name=\""+language+"\" value=\""+ languageID +"\" >" +
+  //     "<td data-langid=\""+languageID+"\" >" +language +"</td>"+
+  //     "<td class=\"prof-selection\" >"+
+  //       "<select class=\"prof-select\" name=\""+language+"\" class=\"field select\"" +
+  //       "tabindex=\"5\"  required>" 
+  //       <%# $prof_name.each do |name| %>"temporary text" +
+  //           "<option name=\"<%= name %>\"><%= name %></option>"
+  //         <%# end %> +
+  //       "</select>" +
+  //     "</td>" +
+  //     "<td class=\"remove-lang\"><a href=\"#\">Remove</a></td>"+
+  //     "</tr>"
+  //   );
   }
 
   // disabled already selected languages from the list
