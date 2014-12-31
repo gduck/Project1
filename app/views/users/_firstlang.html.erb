@@ -1,0 +1,26 @@
+<div class="fields">
+  <%= f.label :first_language, "Native Language" %>
+  <span class="req">*</span>
+
+  <div class="full">
+    <span class="margin-btm">First Language :
+    </span>
+    <span id="native-lang"><%= @user.first_language %>
+    </span>
+   </div>
+   <div>
+     <%= f.collection_select(:first_language, @languages, :id, :name, {:selected => @languages.find_by_name(@user.first_language).id}) %>
+   </div>
+</div>
+  
+
+
+ <!--  <td data-langID="<%#= f.object.language_id %>">
+    <%#= f.label :language_id, "#{f.object.language.name}" %>
+  </td>
+  <td>
+    <%#= f.collection_select(:prof_category_id, @categories, :id, :prof_name, {:selected => f.object.prof_category.id}) %>
+    <%#= f.hidden_field :_destroy, {:class => "killme"} %>
+    <%#= link_to "Remove", "javascript:", :onclick => "remove_fields(this);" %> 
+  </td>
+</div> -->

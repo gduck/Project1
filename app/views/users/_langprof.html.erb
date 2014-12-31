@@ -5,8 +5,6 @@
   <td>
     <%= f.collection_select(:prof_category_id, @categories, :id, :prof_name, {:selected => f.object.prof_category.id}) %>
     <%= f.hidden_field :_destroy, {:class => "killme"} %>
-    <!-- link_to_putanythinghere doesn't work -->
-    <%#= link_to_remove_fields "Remove", f %> 
     <%= link_to "Remove", "javascript:", :onclick => "remove_fields(this);" %> 
   </td>
 </tr>
