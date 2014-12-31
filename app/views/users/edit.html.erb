@@ -38,12 +38,9 @@
           </span>
         </div>
       </li>
-      
 
       <li class="leftHalf">
-        <%= user_form.fields_for :first_language, @user.first_language do |builder| %>
-          <%= render "firstlang", :f => builder %>
-        <% end %>
+          <%= render "firstlang", :f => user_form %>
       </li>
 
       <li class="rightHalf">
@@ -52,19 +49,12 @@
           <!-- thinking this is tied to user, shouldn't be. js render can be put into db -->
           <%= user_form.collection_select(:language_profs, @languages, :id, :name, {:include_blank => "Choose another"}) %>
         </div>
-        
         <div>
           <table>
             <tbody id="other-lang">
-
               <%= user_form.fields_for :language_profs, @user.language_profs do |builder| %>
-                <!-- <tr> -->
                   <%= render "langprof", :f => builder %>
-                <!-- </tr> -->
               <% end %>
-
-
-
             </tbody>
           </table>
         </div>

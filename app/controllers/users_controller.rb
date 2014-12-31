@@ -28,28 +28,19 @@ class UsersController < ApplicationController
 
 
   def show
- 
   end
 
   def edit
-
     @categories = ProfCategory.all
-    puts ">>>>>>>> in edit, user params is #{params}"
-    puts ">>>>>>> in edit, langprofs is #{@user.language_profs}"
   end
 
   def update
-
-    lang = Language.find(user_params[:first_language]).name
-    puts ">>>>>>>>>>>>langprofs in params is #{user_params[:language_profs]}"
-    puts ">>>>>> @user.langprofs is #{@user.language_profs}"
     if @user.update_attributes(
       {
       :first_name => user_params[:first_name],
       :last_name => user_params[:last_name],
-      :first_language => lang,
+      :first_language => user_params[:first_language],
       :language_profs_attributes => user_params[:language_profs_attributes]
-
       })
 
       flash[:notice] = "Details updated"
