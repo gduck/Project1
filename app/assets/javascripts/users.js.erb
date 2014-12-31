@@ -61,7 +61,7 @@ $(document).ready(function() {
     $("#native-lang").html($("#user_first_language option:selected").text());
   });
 
- 
+
 
   // do some restricting of available language options
   $("#user_first_language").on('focus', function() {
@@ -70,7 +70,7 @@ $(document).ready(function() {
     var nativeLangID = parseInt($("#user_first_language option:selected").val());
     console.log("native lang is " + nativeLangID);
     
-    var languageIDs = $('#other-lang td').map(function() {
+    var languageIDs = $(".other-lang").parent().map(function() {
       return $(this).attr("data-langid");
     }).get();
     console.log("other langs "+ languageIDs);

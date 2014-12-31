@@ -31,8 +31,13 @@
 
    // must put the data-langid in when selected
   var update_langids = function(link) {
-    console.log(link);
-    console.log(link.prev());
-
-    $(link).prev().data-langid(link.selected);
+    //var id = link(id);
+    console.log(link.id);
+    //console.log(id);
+    
+    var element = document.getElementById(link.id);
+    console.log(element);
+    
+    $(link).parent().attr("data-langid", element.selectedIndex);
+    console.log($(link).parent().data("langid"));
   }

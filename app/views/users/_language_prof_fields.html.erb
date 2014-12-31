@@ -1,7 +1,7 @@
 <!-- new language proficiencies -->
 <tr class="fields">
-  <td data-langID="">
-    <%= f.collection_select(:language_id, @languages, :id, :name, {:include_blank => "Choose another"}, {:class => "lang", :onchange => "update_langids(this);" }) %>
+  <td data-langid="">
+    <%= f.collection_select(:language_id, @languages, :id, :name, {:include_blank => "Choose another"}, {:class => "lang other-lang", :onchange => "update_langids(this);" }) %>
   </td>
   <td>
     <%= f.collection_select(:prof_category_id, @categories, :id, :prof_name) %>
