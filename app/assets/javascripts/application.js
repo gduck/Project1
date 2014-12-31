@@ -24,8 +24,8 @@
     var new_id = new Date().getTime();
     var regexp = new RegExp("new_language_profs", "g");
     // may need to adjust where this is added below
-    console.log(regexp);
-    $(link).prev().append(content.replace(regexp, new_id));
+    console.log($('#other-lang'));
+    $('#other-lang').append(content.replace(regexp, new_id));
     // $(link).parent().after(content.replace(regexp, new_id));
   };
 
