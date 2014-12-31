@@ -46,17 +46,14 @@
       <li class="rightHalf">
         <div class="row full">
           <label class="wide" id="other-lang-lbl">Are you multilingual?</label>
-          <!-- thinking this is tied to user, shouldn't be. js render can be put into db -->
-          <%= user_form.collection_select(:language_profs, @languages, :id, :name, {:include_blank => "Choose another"}) %>
-        </div>
-        <div>
           <table>
             <tbody id="other-lang">
               <%= user_form.fields_for :language_profs, @user.language_profs do |builder| %>
-                  <%= render "langprof", :f => builder %>
+                  <%= render "language_prof", :f => builder  %>
               <% end %>
             </tbody>
           </table>
+              <%= link_to_add_fields "Add another", user_form, :language_profs %>
         </div>
       </li>
       </ul>

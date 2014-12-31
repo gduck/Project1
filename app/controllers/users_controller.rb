@@ -55,7 +55,7 @@ class UsersController < ApplicationController
 
   protected
   def user_params
-    params.required(:user).permit(:id, :first_name, :last_name, :first_language, :language_profs_attributes => [:id, :prof_category_id, :_destroy])
+    params.required(:user).permit(:id, :first_name, :last_name, :first_language, :language_profs_attributes => [:id, :prof_category_id, :language_id, :_destroy], )
   end
 
 end

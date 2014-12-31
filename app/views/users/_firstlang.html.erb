@@ -9,7 +9,7 @@
     </span>
    </div>
    <div>
-     <%= f.collection_select(:first_language, @languages, :id, :name, {:selected => @user.first_language}) %>
+     <%= f.collection_select(:first_language, @languages, :id, :name, {:selected => @user.first_language}, {:class => "lang"}) %>
    </div>
 </div>
   

@@ -4,13 +4,25 @@
 $(document).ready(function() {
 
 
-  // draw the new language selected
+
+
+
+
   $("#user_language_profs").change(function() {
+    // on change - get language details,
+    // create a new langprof object in ruby,
+    // fill with details, and render
 
     var language = $("#user_language_profs option:selected").text();
     var languageID = $("#user_language_profs option:selected").val();
-    console.log("New language selected: ", language)
-    drawLanguage(language, languageID);
+    console.log("New language selected: ", language);
+
+    // do ruby code to set up new object and render content
+    //var new_id = new Date().getTime();
+
+
+
+    //drawLanguage(language, languageID);
 
 
     });
@@ -34,16 +46,13 @@ $(document).ready(function() {
 
   // disabled already selected languages from the list
   var removeAllDisabled = function() {
-    $("select[id='user_language_profs'] option").map(function() {
-      $(this).removeAttr("disabled", "disabled");
-    });
-      
-    $("select[id='user_first_language'] option").map(function() {
+    $("select[class='lang'] option").map(function() {
       $(this).removeAttr("disabled", "disabled");
     });
   }
+
   var addDisabled = function(value) {
-    $("option[value="+value+"]")
+    $("select[class='lang'] option[value="+value+"]")
       .attr("disabled", "disabled")
   }
 
@@ -52,9 +61,11 @@ $(document).ready(function() {
     $("#native-lang").html($("#user_first_language option:selected").text());
   });
 
+ 
+
   // do some restricting of available language options
   $("#user_first_language").on('focus', function() {
-    
+
     // disable the language in the other list
     var nativeLangID = parseInt($("#user_first_language option:selected").val());
     console.log("native lang is " + nativeLangID);
@@ -70,8 +81,9 @@ $(document).ready(function() {
       addDisabled(languageIDs[i]);
     };
   });
+
   // must change the list if either drop down box changes
-  $("#user_language_profs").on('focus', function(e) {
+  $(".lang").on('focus', function(e) {
     e.preventDefault();
     console.log("focus function called");
     var nativeLangID = parseInt($("#user_first_language option:selected").val());

@@ -19,3 +19,20 @@
     var x = $(link).prev(".killme").val(1);
     var y = $(link).closest(".fields").hide();
   };
+
+  function add_fields(link, association, content) {
+    var new_id = new Date().getTime();
+    var regexp = new RegExp("new_language_profs", "g");
+    // may need to adjust where this is added below
+    console.log(regexp);
+    $(link).prev().append(content.replace(regexp, new_id));
+    // $(link).parent().after(content.replace(regexp, new_id));
+  };
+
+   // must put the data-langid in when selected
+  var update_langids = function(link) {
+    console.log(link);
+    console.log(link.prev());
+
+    $(link).prev().data-langid(link.selected);
+  }
