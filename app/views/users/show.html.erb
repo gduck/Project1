@@ -20,7 +20,7 @@
 
       <tr>
         <td>
-          <%= @user.first_language %><br>
+          <%= @languages.find(@user.first_language).name %><br>
           <% @user.languages.each do |lang| %>
             <%= lang.name  %>
           <br>

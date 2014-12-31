@@ -35,20 +35,21 @@ ActiveRecord::Schema.define(version: 20141225063241) do
   end
 
   create_table "users", force: true do |t|
+    t.string   "user_name"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "first_language",         default: "English", null: false
+    t.integer  "first_language",         default: 1,  null: false
     t.string   "address_area"
     t.string   "text_area"
     t.text     "file_ref"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email",                  default: "",        null: false
-    t.string   "encrypted_password",     default: "",        null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,         null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"

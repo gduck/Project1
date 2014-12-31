@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def get_user
     @user = User.find(params[:id]) 
+    @languages = Language.all
   end
 
   def check_auth
@@ -19,6 +20,7 @@ class UsersController < ApplicationController
     # only users with some language proficiency needed
     # limit to 5 for the front page, most recent
     @users_with_lang_profs =  User.order(created_at: :desc).joins(:language_profs).includes(:language_profs).limit(5)
+    @languages = Language.all
   end
 
   def new
@@ -26,10 +28,11 @@ class UsersController < ApplicationController
 
 
   def show
+ 
   end
 
   def edit
-    @languages = Language.all
+
     @categories = ProfCategory.all
     puts ">>>>>>>> in edit, user params is #{params}"
     puts ">>>>>>> in edit, langprofs is #{@user.language_profs}"
