@@ -12,4 +12,14 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :language_profs, :allow_destroy => true
 
+  def self.search(search)
+    if search
+      #find(:all, :conditions => ['language.name LIKE ?', "%#{search}%"])
+      joins(:language_profs).joins(:languages).where('languages.name LIKE ?', "%#{search}%").includes(:language_profs)
+    else
+      #scoped
+      User.order(created_at: :desc).joins(:language_profs).includes(:language_profs).limit(5)
+    end
+  end
 end
+

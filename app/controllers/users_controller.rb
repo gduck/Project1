@@ -19,7 +19,9 @@ class UsersController < ApplicationController
   def index
     # only users with some language proficiency needed
     # limit to 5 for the front page, most recent
-    @users_with_lang_profs =  User.order(created_at: :desc).joins(:language_profs).includes(:language_profs).limit(5)
+
+    @users_with_lang_profs = User.search(params[:search])
+    # User.order(created_at: :desc).joins(:language_profs).includes(:language_profs).limit(5)
     @languages = Language.all
   end
 
