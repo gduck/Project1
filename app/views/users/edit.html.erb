@@ -49,6 +49,7 @@
           <label class="wide" id="other-lang-lbl">Are you multilingual?</label>
           <table>
             <tbody id="other-lang">
+              <th>First Language</th><th></th><th></th>
               <%= user_form.fields_for :language_profs, @user.language_profs do |builder| %>
                   <%= render "language_prof", :f => builder  %>
               <% end %>

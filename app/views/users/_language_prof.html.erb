@@ -1,9 +1,14 @@
 <tr class="fields">
-  <td data-langID="<%= f.object.language_id %>">
+  <td data-langID="<%= f.object.language_id %>" class="pad">
+    <%= radio_button_tag(:primary, f.object.id ) %>
+    <%#= label_tag(:primary, "This is my first language", :class => "small") %>    
     <%= f.label :language_id, "#{f.object.language.name}" %>
   </td>
-  <td>
+  <td class="pad">
     <%= f.collection_select(:prof_category_id, @categories, :id, :prof_name, {:selected => f.object.prof_category.id}) %>
+
+  </td>
+  <td class="pad">
     <%= f.hidden_field :_destroy, {:class => "killme"} %>
     <%= link_to_remove_fields "Remove", f %>
   </td>
