@@ -10,14 +10,12 @@ module ApplicationHelper
     # f here must be from user_form for correct association
     new_object = f.object.class.reflect_on_association(association).klass.new
 
-    puts ">>>>>>>>>>> new object is #{new_object}"
-
     fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
       
       render(association.to_s.singularize + "_fields", :f => builder)
     end
 
-    link_to name, "javascript:", :onclick => "add_fields(this, \":language_profs\", \"#{escape_javascript(fields)}\");"
+    link_to name, "javascript:", :onclick => "add_fields(this, \"association\", \"#{escape_javascript(fields)}\");"
 
   end
     

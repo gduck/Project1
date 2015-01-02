@@ -12,7 +12,7 @@
         </ul>
       </div>
     <% end %>
-  <!-- <form id="edit-user" name="edit-form" class="form-class" accept-charset="UTF-8" autocomplete="off" method="post"> -->
+ 
     <header class="info">
       <h2>Edit details for <%= @user.email %></h2>
     </header>
@@ -53,7 +53,7 @@
               <% end %>
             </tbody>
           </table>
-              <%= link_to_add_fields "Add another", user_form, :language_profs %>
+          <%= link_to_add_fields "Add another", user_form, :language_profs %>
         </div>
       </li>
       </ul>
