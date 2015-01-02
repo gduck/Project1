@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141225063241) do
+ActiveRecord::Schema.define(version: 20150102082003) do
 
   create_table "language_profs", force: true do |t|
     t.integer  "user_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20141225063241) do
     t.integer  "prof_category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "primary",          default: false
   end
 
   create_table "languages", force: true do |t|
@@ -38,7 +39,6 @@ ActiveRecord::Schema.define(version: 20141225063241) do
     t.string   "user_name"
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "first_language",         default: 1,  null: false
     t.string   "address_area"
     t.string   "text_area"
     t.text     "file_ref"

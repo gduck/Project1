@@ -5,6 +5,7 @@ class CreateLanguageProfs < ActiveRecord::Migration
       t.integer :user_id
       t.integer :language_id
       t.integer :prof_category_id
+      #t.boolean :boolean, { default: false }
 
       t.timestamps
     end

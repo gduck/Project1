@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :languages, through: :language_profs
   has_many :prof_categories, through: :language_profs
 
+  has_primary :language
 
   accepts_nested_attributes_for :language_profs, :allow_destroy => true
 
@@ -18,7 +19,9 @@ class User < ActiveRecord::Base
       joins(:language_profs).joins(:languages).where('languages.name LIKE ?', "%#{search}%").includes(:language_profs)
     else
       #scoped
-      User.order(created_at: :desc).joins(:language_profs).includes(:language_profs).limit(5)
+      # only users with some language proficiency needed
+      # limit to 5 for the front page, most recent
+      order(created_at: :desc).joins(:language_profs).includes(:language_profs).limit(5)
     end
   end
 end

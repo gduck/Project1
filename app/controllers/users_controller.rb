@@ -17,11 +17,9 @@ class UsersController < ApplicationController
   end
 
   def index
-    # only users with some language proficiency needed
-    # limit to 5 for the front page, most recent
-
+    
     @users_with_lang_profs = User.search(params[:search])
-    # User.order(created_at: :desc).joins(:language_profs).includes(:language_profs).limit(5)
+    
     @languages = Language.all
   end
 
@@ -41,7 +39,7 @@ class UsersController < ApplicationController
       {
       :first_name => user_params[:first_name],
       :last_name => user_params[:last_name],
-      :first_language => user_params[:first_language],
+      # :primary_language => user_params[:primary_language],
       :language_profs_attributes => user_params[:language_profs_attributes]
       })
 
@@ -57,7 +55,7 @@ class UsersController < ApplicationController
 
   protected
   def user_params
-    params.required(:user).permit(:id, :first_name, :last_name, :first_language, :language_profs_attributes => [:id, :prof_category_id, :language_id, :_destroy], )
+    params.required(:user).permit(:id, :first_name, :last_name, :primary_language, :language_profs_attributes => [:id, :prof_category_id, :language_id, :primary, :_destroy], )
   end
 
 end

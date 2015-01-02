@@ -77,6 +77,7 @@ GEM
     multi_json (1.10.1)
     orm_adapter (0.5.0)
     pg (0.17.1)
+    prim (0.0.2)
     rack (1.5.2)
     rack-contrib (1.2.0)
       rack (>= 0.9.1)
@@ -146,6 +147,7 @@ DEPENDENCIES
   jquery-rails
   meta_request
   pg
+  prim
   rails (= 4.1.8)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
