@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   end
 
   def new
+ 
   end
 
 
@@ -31,10 +32,17 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @languages = Language.all
     @categories = ProfCategory.all
+    @langprof = LanguageProf.new(:user_id => @user.id)
   end
 
   def update
+    # user_languages = current_user.language_profs_attributes
+    # puts '>>>>>>>>>>>>>>>>', current_user.id
+    LanguageProf.where(:user_id => current_user.id).update_all(primary: false)
+    LanguageProf.where(:id => params[:primary].to_i).update_all(primary: true)
+    # error
     if @user.update_attributes(
       {
       :first_name => user_params[:first_name],
@@ -55,7 +63,7 @@ class UsersController < ApplicationController
 
   protected
   def user_params
-    params.required(:user).permit(:id, :first_name, :last_name, :primary_language, :language_profs_attributes => [:id, :prof_category_id, :language_id, :primary, :_destroy], )
+    params.required(:user).permit(:id, :first_name, :last_name, :first_language, :language_profs_attributes => [:id, :user_id, :prof_category_id, :language_id, :primary, :_destroy], )
   end
 
 end

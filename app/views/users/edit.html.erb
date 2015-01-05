@@ -1,4 +1,4 @@
-<div>
+<div class="col-xs-12 col-sm-10 col-sm-offset-1">
 <!-- This is the view -->
   
   <%= form_for @user  do |user_form| %>
@@ -17,7 +17,7 @@
       <h2>Edit details for <%= @user.email %></h2>
     </header>
     <ul>
-      <li>
+      <li class="leftHalf">
         <label class="desc">Name<span id="req_1" class="req">*</span></label>
         <span>
           <%= user_form.text_field :first_name, :type => "text", :class =>"field text", :tabindex =>"1", :required => true %>
@@ -29,7 +29,7 @@
           <label for="last-name">Last</label>
         </span>      
       </li>
-      <li class="">
+      <li >
         <label class="desc">Address<span id="req_2" class="req">*</span></label>
         <div>
           <span class="address-area full">
@@ -39,22 +39,30 @@
         </div>
       </li>
 
-      <li class="leftHalf">
-        No first language for now
+      <!--  <li class="leftHalf">
           <%#= render "firstlang", :f => user_form %>
-      </li>
+      </li> -->
 
-      <li class="rightHalf">
-        <div class="row full">
-          <label class="wide" id="other-lang-lbl">Are you multilingual?</label>
-          <table>
-            <tbody id="other-lang">
-              <th>First Language</th><th></th><th></th>
-              <%= user_form.fields_for :language_profs, @user.language_profs do |builder| %>
-                  <%= render "language_prof", :f => builder  %>
-              <% end %>
-            </tbody>
-          </table>
+      <li class="">
+        <div class="">
+          <label  id="other-lang-lbl">What languages do you speak?</label>
+
+            <table>
+              <tbody id="other-lang">
+                <% if @user.languages.count == 0 %>
+
+                  <%= user_form.fields_for :language_profs, @langprof do |builder| %>
+                      <%= render "language_prof_fields", :f => builder  %>
+                  <% end %>
+                <% else %>
+                  <th>Language</th><th class="pad">Proficiency</th><th></th><th>First language</th>
+
+                  <%= user_form.fields_for :language_profs, @user.language_profs do |builder| %>
+                      <%= render "language_prof", :f => builder  %>
+                  <% end %>
+                <% end %>
+              </tbody>
+            </table>
           <%= link_to_add_fields "Add another", user_form, :language_profs %>
         </div>
       </li>

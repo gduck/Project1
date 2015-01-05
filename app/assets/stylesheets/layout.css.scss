@@ -4,6 +4,7 @@
 // BODY STUFF
 .body-class {
   font-family: 'Yanone Kaffeesatz', sans-serif;
+  // background-image: url("app/assets/images/bg.jpg");
 }
 #main {
   background: #ffffff;
@@ -11,6 +12,14 @@
 #main h1 {
   margin: 0;
   padding: 0;
+}
+.kristi {
+  font-family: 'Kristi', sans-serif;
+  font-size: 150%;
+}
+.frijole {
+  font-family: 'Frijole', sans-serif;
+  font-size: 200%;
 }
 
 
@@ -131,4 +140,10 @@
 }
 .small {
   font-size: 60%;
+}
+.center {
+  text-align: center;
+}
+.navbar-nav.right {
+  float: right;
 }

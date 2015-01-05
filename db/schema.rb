@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150102082003) do
+ActiveRecord::Schema.define(version: 20150102072847) do
 
   create_table "language_profs", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "language_id"
-    t.integer  "prof_category_id"
+    t.integer  "user_id",          null: false
+    t.integer  "language_id",      null: false
+    t.integer  "prof_category_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "primary",          default: false
+    t.boolean  "primary"
   end
 
   create_table "languages", force: true do |t|
@@ -39,7 +39,9 @@ ActiveRecord::Schema.define(version: 20150102082003) do
     t.string   "user_name"
     t.string   "first_name"
     t.string   "last_name"
+    t.integer  "first_language",         default: 1,  null: false
     t.string   "address_area"
+    t.integer  "work_preferences"
     t.string   "text_area"
     t.text     "file_ref"
     t.datetime "created_at"

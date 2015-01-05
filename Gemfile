@@ -41,9 +41,6 @@ gem 'meta_request', group: :development
 gem 'better_errors', group: :development
 gem 'binding_of_caller', group: :development
 
-# for setting the first language as primary language
-gem 'prim'
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
