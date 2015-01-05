@@ -12,11 +12,7 @@
     <%= link_to_remove_fields "Remove", f %>
   </td>
   <td class="center">
-    <%#= f.text_field :primary %>
     <%= f.radio_button :primary, f.object.id, :checked => f.object.primary, :name => "primary", :id => f.object.id %>
-    <%= f.object.primary %>
-    <%#= f.radio_button(:primary, nil, :checked => !f.object.primary)  , name: "primary"%>
-    <%= puts ">>>>>>>> #{f.object.language.name}" %>
-    <%= puts ">>>>>>>> #{f.object.primary}"%>
+    <%#= f.object.primary %>
   </td>
 </tr>

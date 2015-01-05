@@ -38,10 +38,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    # user_languages = current_user.language_profs_attributes
-    # puts '>>>>>>>>>>>>>>>>', current_user.id
-    LanguageProf.where(:user_id => current_user.id).update_all(primary: false)
-    LanguageProf.where(:id => params[:primary].to_i).update_all(primary: true)
+    
+    # need to change this to current_user again when I have my permissions set
+    LanguageProf.where(:user_id => @user.id).update_all(primary: false)
+    # LanguageProf.where(:user_id => current_user.id).update_all(primary: false)
+    LanguageProf.find(params[:primary]).update(primary: true)
     # error
     if @user.update_attributes(
       {
