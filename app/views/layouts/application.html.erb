@@ -2,65 +2,42 @@
 <html>
   <head>
     <title>want MAW</title>
-
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-    
     <script type="text/javascript" src="https://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
-    
     <link href='https://fonts.googleapis.com/css?family=Kristi|Frijole|Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
-
     <%= csrf_meta_tags %>
   </head>
-
-  
-
   <body class="body-class">
     <!-- main content put into a 10 wide column for white space either side -->
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-10 col-sm-offset-1 col-xs-12">
-          
           <header id="header">
               <div class="row">
-                  <!-- <div class="col-md-10 col-md-offset-1 col-xs-12"> -->
                     <%= render 'layouts/header' %>
-                  <!-- </div> -->
               </div>
           </header>
-
           <main id="main">
-
             <% if flash[:notice] %>
               <div id="notice"><%= flash[:notice] %></div>
             <% end %>
-
             <%= yield %>
           </main>
-
           <footer class="footer">
             <div class="container col-xs-12">
               <div class="row">
-                <!-- <div class="col-sm-10 col-sm-offset-1 col-xs-12"> -->
-                  <div class="footer-inner">
-                    <% if current_user %>
-                      <%= "Signed in as #{current_user.email}" %>
-                    <% end %>
-                  </div>
-                <!-- </div> -->
+                <div class="footer-inner">
+                  <% if current_user %>
+                    <%= "Signed in as #{current_user.email}" %>
+                  <% end %>
+                </div>
               </div>
             </div>
           </footer>
-
         </div>
       </div>
-
-
-
     </div>
-
-
-
   </body>
 
 </html>

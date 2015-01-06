@@ -1,0 +1,2 @@
+class AgentAssociationsController < ApplicationController
+end

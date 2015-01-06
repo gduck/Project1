@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   # //need this for now
-  $prof_name = ['Beginner', 'Conversational', 'Fluent', 'Native' ]
+  #$prof_name = ['Beginner', 'Conversational', 'Fluent', 'Native' ]
 
 end

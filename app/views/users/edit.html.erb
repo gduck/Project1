@@ -1,6 +1,4 @@
 <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-<!-- This is the view -->
-  
   <%= form_for @user  do |user_form| %>
     <% if @user.errors.any? %>
       <div class="error_messages">
@@ -12,7 +10,6 @@
         </ul>
       </div>
     <% end %>
- 
     <header class="info">
       <h2>Edit details for <%= @user.email %></h2>
     </header>
@@ -21,7 +18,6 @@
         <label class="desc">Name<span id="req_1" class="req">*</span></label>
         <span>
           <%= user_form.text_field :first_name, :type => "text", :class =>"field text", :tabindex =>"1", :required => true %>
-
           <label for="first-name">First</label>
         </span>
         <span>
@@ -29,6 +25,16 @@
           <label for="last-name">Last</label>
         </span>      
       </li>
+      <%# if @user.role == 'nil' %>
+        <li class="rightHalf" id="register" >
+            <%#= "Current role is #{@user.role}" %>
+            <%= user_form.radio_button :role, "member" %>
+            <%= label_tag :role_member, "I am registering as a project seeker" %><br>
+            <%= user_form.radio_button :role, "company" %>
+            <%= label_tag :role_member, "I am looking to hire someone" %>
+            <%= user_form.radio_button :role, "nil", :hidden => true, :checked => true %>
+        </li>
+      <%# end %>
       <li >
         <label class="desc">Address<span id="req_2" class="req">*</span></label>
         <div>
@@ -38,25 +44,17 @@
           </span>
         </div>
       </li>
-
-      <!--  <li class="leftHalf">
-          <%#= render "firstlang", :f => user_form %>
-      </li> -->
-
       <li class="">
         <div class="">
           <label  id="other-lang-lbl">What languages do you speak?</label>
-
             <table>
               <tbody id="other-lang">
                 <% if @user.languages.count == 0 %>
-
                   <%= user_form.fields_for :language_profs, @langprof do |builder| %>
                       <%= render "language_prof_fields", :f => builder  %>
                   <% end %>
                 <% else %>
                   <th>Language</th><th class="pad">Proficiency</th><th></th><th>First language</th>
-
                   <%= user_form.fields_for :language_profs, @user.language_profs do |builder| %>
                       <%= render "language_prof", :f => builder  %>
                   <% end %>
@@ -66,13 +64,12 @@
           <%= link_to_add_fields "Add another", user_form, :language_profs %>
         </div>
       </li>
-      </ul>
-  
-  <div class="btn-group">
-    <%= user_form.text_field :user_id, :value =>@user.id, :hidden => true%>
-    <%= user_form.submit "Submit", :class => "btn btn-default", :type => 'submit', :id => 'user_edit' %>
-    <%= flash[:message] %>
-  </div>
+    </ul>
+    <div class="btn-group">
+      <%= user_form.text_field :user_id, :value =>@user.id, :hidden => true%>
+      <%= user_form.submit "Submit", :class => "btn btn-default", :type => 'submit', :id => 'user_edit' %>
+      <%= flash[:message] %>
+    </div>
   <% end %>
 </div>
 

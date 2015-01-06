@@ -9,35 +9,27 @@
     <%= link_to "edit", edit_user_path %>
   </span>
   </div>
-
   <div class="col-xs-12 col-sm-10 col-sm-offset-1">
     <table class="table"> 
       <tbody> 
-    
         <tr>
           <th>Languages</th>
           <th>Proficiency</th>
         </tr>
-
         <tr>
           <td>
-            <!-- <%#= @languages.find(@user.first_language).name %><br> -->
             <% @user.languages.each do |lang| %>
               <%= lang.name  %>
             <br>
             <% end %>
           </td>
-
           <td>
-            <!-- First language<br> -->
             <% @user.prof_categories.each do |lprof| %>
               <%= lprof.prof_name  %>
               <br>
             <% end %>
           </td>
-
         </tr>
-
     </tbody>
     </table>
   </div>

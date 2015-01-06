@@ -5,7 +5,6 @@
   </td>
   <td class="pad">
     <%= f.collection_select(:prof_category_id, @categories, :id, :prof_name, {:selected => f.object.prof_category.id}) %>
-
   </td>
   <td class="pad small">
     <%= f.hidden_field :_destroy, {:class => "killme"} %>
