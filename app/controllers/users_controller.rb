@@ -11,9 +11,10 @@ class UsersController < ApplicationController
   end
 
   def check_auth
-    #if session[:user_id] != @user.user_id
-      # flash[:notice] = "Sorry, you can't edit this"
-      # redirect_to(show_path)
+    if current_user != @user
+       flash[:notice] = "You may only view your own profile!"
+       redirect_to(users_path)
+    end
   end
 
   def index
