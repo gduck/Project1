@@ -26,6 +26,7 @@
         </span>      
       </li>
       <%# if @user.role == 'nil' %>
+        <%#= render 'user_role', f => user_role %>
         <li class="rightHalf" id="register" >
             <%#= "Current role is #{@user.role}" %>
             <%= user_form.radio_button :role, "member" %>
