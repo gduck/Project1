@@ -8,9 +8,29 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    build_resource(registration_params)
+
+    if registration_params[:role] == 'nil'
+      flash[:notice] = "Please choose your category!"
+      redirect_to :back
+      return
+    end
+
+    if resource.save
+      if resource.active_for_authentication?
+        set_flash_message :notice, :signed_up if is_navigational_format?
+        sign_up(resource_name, resource)
+        respond_with resource, :location => after_sign_up_path_for(resource)
+      else
+        set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_navigational_format?
+        respond_with resource, :location => after_sign_up_path_for(resource)
+      end
+    else
+      clean_up_passwords(resource)
+      respond_with resource
+    end
+  end  
 
   # GET /resource/edit
   # def edit
@@ -36,8 +56,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
-
+   protected
+  def registration_params
+    params.require(:user).permit(:email, :role, :province_id, :password, :password_confirmation)
+  end
   # You can put the params you want to permit in the empty array.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.for(:sign_up) << :attribute
@@ -51,7 +73,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up.
   def after_sign_up_path_for(resource)
     #super(resource)
-    # 'users/edit'
+    #'users/:id/edit'
     #root_path
     # current_user
     edit_user_path(current_user)

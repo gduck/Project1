@@ -37,5 +37,10 @@ namespace :import_databases do
     end
   end
 
-
+  task :import_all => :environment do
+    require 'csv'
+    task :import_profnames
+    task :import_profs
+    task :import_lang
+  end
 end

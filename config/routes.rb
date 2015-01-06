@@ -19,9 +19,9 @@ Rails.application.routes.draw do
 
   resources :users
   resources :language_profs
-
   resources :companies
 
+  
 
   # Example resource route with options:
   #   resources :products do

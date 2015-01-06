@@ -13,58 +13,54 @@
     <header class="info">
       <h2>Edit details for <%= @user.email %></h2>
     </header>
+
     <ul>
-      <li class="leftHalf">
-        <label class="desc">Name<span id="req_1" class="req">*</span></label>
-        <span>
-          <%= user_form.text_field :first_name, :type => "text", :class =>"field text", :tabindex =>"1", :required => true %>
-          <label for="first-name">First</label>
-        </span>
-        <span>
-          <%= user_form.text_field :last_name, :type => "text", :class =>"field text", :tabindex =>"2", :required => true %>
-          <label for="last-name">Last</label>
-        </span>      
-      </li>
       <%# if @user.role == 'nil' %>
-        <%#= render 'user_role', f => user_role %>
-        <li class="rightHalf" id="register" >
-            <%#= "Current role is #{@user.role}" %>
-            <%= user_form.radio_button :role, "member" %>
-            <%= label_tag :role_member, "I am registering as a project seeker" %><br>
-            <%= user_form.radio_button :role, "company" %>
-            <%= label_tag :role_member, "I am looking to hire someone" %>
-            <%= user_form.radio_button :role, "nil", :hidden => true, :checked => true %>
+        <li class="center" id="register" >
+          <%= render 'user_role', :f => user_form %>
+        </li>
+      <%# elsif @user.role == 'member' %>
+        <li class="leftHalf">
+          <label class="desc">Name<span id="req_1" class="req">*</span></label>
+          <span>
+            <%= user_form.text_field :first_name, :type => "text", :class =>"field text", :tabindex =>"1", :required => true %>
+            <label for="first-name">First</label>
+          </span>
+          <span>
+            <%= user_form.text_field :last_name, :type => "text", :class =>"field text", :tabindex =>"2", :required => true %>
+            <label for="last-name">Last</label>
+          </span>      
+        </li>
+        <li >
+          <label class="desc">Address<span id="req_2" class="req">*</span></label>
+          <div>
+            <span class="address-area full">
+              <input id="address_area" name="address_area" type="text" class="field text wide" value size="8" tabindex="3">
+              <label for="address">Area (HK Island, Kowloon, NT)</label>
+            </span>
+          </div>
+        </li>
+        <li class="">
+          <div class="">
+            <label  id="other-lang-lbl">What languages do you speak?</label>
+              <table>
+                <tbody id="other-lang">
+                  <% if @user.languages.count == 0 %>
+                    <%= user_form.fields_for :language_profs, @langprof do |builder| %>
+                        <%= render "language_prof_fields", :f => builder  %>
+                    <% end %>
+                  <% else %>
+                    <th>Language</th><th class="pad">Proficiency</th><th></th><th>First language</th>
+                    <%= user_form.fields_for :language_profs, @user.language_profs do |builder| %>
+                        <%= render "language_prof", :f => builder  %>
+                    <% end %>
+                  <% end %>
+                </tbody>
+              </table>
+            <%= link_to_add_fields "Add another", user_form, :language_profs %>
+          </div>
         </li>
       <%# end %>
-      <li >
-        <label class="desc">Address<span id="req_2" class="req">*</span></label>
-        <div>
-          <span class="address-area full">
-            <input id="address_area" name="address_area" type="text" class="field text wide" value size="8" tabindex="3">
-            <label for="address">Area (HK Island, Kowloon, NT)</label>
-          </span>
-        </div>
-      </li>
-      <li class="">
-        <div class="">
-          <label  id="other-lang-lbl">What languages do you speak?</label>
-            <table>
-              <tbody id="other-lang">
-                <% if @user.languages.count == 0 %>
-                  <%= user_form.fields_for :language_profs, @langprof do |builder| %>
-                      <%= render "language_prof_fields", :f => builder  %>
-                  <% end %>
-                <% else %>
-                  <th>Language</th><th class="pad">Proficiency</th><th></th><th>First language</th>
-                  <%= user_form.fields_for :language_profs, @user.language_profs do |builder| %>
-                      <%= render "language_prof", :f => builder  %>
-                  <% end %>
-                <% end %>
-              </tbody>
-            </table>
-          <%= link_to_add_fields "Add another", user_form, :language_profs %>
-        </div>
-      </li>
     </ul>
     <div class="btn-group">
       <%= user_form.text_field :user_id, :value =>@user.id, :hidden => true%>

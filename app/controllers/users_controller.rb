@@ -29,21 +29,34 @@ class UsersController < ApplicationController
     @langprof = LanguageProf.new(:user_id => @user.id)
   end
 
-  def new
-    
-  end
-
-
-  def update
+  def create
     if user_params[:role] == 'nil'
       flash[:notice] = "Please choose your category!"
       redirect_to :back
       return
     end
-    # need to change this to current_user again when I have my permissions set
-    LanguageProf.where(:user_id => @user.id).update_all(primary: false)
-    # LanguageProf.where(:user_id => current_user.id).update_all(primary: false)
-    LanguageProf.find(params[:primary]).update(primary: true)
+  end
+
+  def new
+    if user_params[:role] == 'nil'
+      flash[:notice] = "Please choose your category!"
+      redirect_to :back
+      return
+    end
+  end
+
+
+
+  def update
+    if user_params[:role].nil?
+      flash[:notice] = "Please choose your category!"
+      redirect_to :back
+      return
+    end
+    if !user_params[:primary].nil?
+      LanguageProf.where(:user_id => @user.id).update_all(primary: false)
+      LanguageProf.find(params[:primary]).update(primary: true)
+    end
     # error
     if @user.update_attributes(
       {
