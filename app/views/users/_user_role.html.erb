@@ -2,7 +2,7 @@
     <%= "Current role is #{@user.role} >> debug only <<" %><br>
     <%= f.radio_button :role, "member" %>
     <%= label_tag :role_member, "I am registering as a project seeker" %><br>
-    <%= f.radio_button :role, "company" %>
+    <%= f.radio_button :role, "agent" %>
     <%= label_tag :role_member, "I am looking to hire someone" %>
     <%= f.radio_button :role, "nil", :hidden => true, :checked => true %>
 </div>

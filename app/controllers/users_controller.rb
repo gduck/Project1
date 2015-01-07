@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   def edit
     @languages = Language.all
     @categories = ProfCategory.all
-    @langprof = LanguageProf.new(:user_id => @user.id)
+    @langprof = LanguageProf.new(:user_id => @user.id, :primary => true)
   end
 
   def create
@@ -38,11 +38,11 @@ class UsersController < ApplicationController
   end
 
   def new
-    if user_params[:role] == 'nil'
-      flash[:notice] = "Please choose your category!"
-      redirect_to :back
-      return
-    end
+    # if user_params[:role] == 'nil'
+    #   flash[:notice] = "Please choose your category!"
+    #   redirect_to :back
+    #   return
+    # end
   end
 
 

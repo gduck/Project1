@@ -14,6 +14,7 @@
              <%#= f.label :password, :class => "col-xs-2 control-label" %>
               
             <div class="col-sm-12">
+              <% placehold = "" %>
               <% if @validatable %>
                 <% placehold = "(#{@minimum_password_length} chars minimum)" %>
               <% end %>
