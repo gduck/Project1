@@ -1,62 +1,34 @@
+<div class="col-xs-12 container">
 
+  <%= render 'layouts/logospace' %>
+  <%= render 'layouts/linkbar' %>
 
-  <div class="col-xs-12 container">
+  <div class="row">
 
-    <%= render 'layouts/logospace' %>
-    <%= render 'layouts/linkbar' %>
+    <div id="login-wrapper" class="hidden-xs hidden-sm col-md-2">
+      <%= render 'layouts/signinbox'%>
+    </div>
 
-
-    <div class="row">
-      <div id="login-wrapper" class="hidden-xs hidden-sm col-md-1">
-        <%= render 'layouts/signinbox'%>
+    <div class="col-xs-12 col-md-9 col-lg-9">
+    <!-- main index of users -->
+      <h1>Recent joiners:</h1>
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Languages</th>
+              <th>Proficiency</th>
+            </tr>
+          </thead>
+          <tbody id="users">
+            <%= render @users %>
+          </tbody>
+        </table>
       </div>
 
-      <div class="col-xs-12 col-md-10 col-lg-10">
-                    
-      <!-- main index of users -->
-        <div id="list-users">
-          <h1>Recent joiners:</h1>
-
-          <table class="table">
-            <thead>
-              <tr>
-                <th>User</th>
-                <th>Languages</th>
-                <th>Proficiency</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @users_with_lang_profs.each do |user| %>
-                <tr>  
-                  <td>
-                    <%= link_to user.email, user %></td> 
-
-                  <td>
-                    <!-- <%#= @languages.find(user.first_language).name %><br> -->
-                    <% user.languages.each do |lang| %>
-                      <%= lang.name  %>
-                      <br>
-                    <% end %>
-                  </td>
-
-                  <td>
-                    <!-- First language<br> -->
-                    <% user.prof_categories.each do |lprof| %>
-                      <%= lprof.prof_name  %>
-                      <br>
-                    <% end %>
-                  </td>
-
-                </tr>
-              <% end %>
-
-            </tbody>
-          </table>
-        </div>
-
-
-      </div>
-    </div>  <!-- end row -->
+    </div>
+  </div>  <!-- end row -->
 </div> 
 
 
