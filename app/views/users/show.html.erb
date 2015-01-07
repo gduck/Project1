@@ -18,9 +18,12 @@
         </tr>
         <tr>
           <td>
-            <% @user.languages.each do |lang| %>
-              <%= lang.name  %>
-            <br>
+            <% @user.language_profs.each do |lp| %>
+              <%= lp.language.name  %>
+                <% if lp.primary? %>
+                 - first language
+                <% end %>
+              <br>
             <% end %>
           </td>
           <td>

@@ -5,6 +5,7 @@ class Company < ActiveRecord::Base
 
   def self.search(search)
     if search
+      # this gets only users with company associations
       joins(:agent_associations).where('companies.name LIKE ?', "%#{search}%").includes(:agent_associations)
     else
       joins(:agent_associations).includes(:agent_associations)
