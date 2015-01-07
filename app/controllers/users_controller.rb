@@ -27,6 +27,7 @@ class UsersController < ApplicationController
     @languages = Language.all
     @categories = ProfCategory.all
     @langprof = LanguageProf.new(:user_id => @user.id, :primary => true)
+    @companies = Company.search(params[:search])
   end
 
   def create

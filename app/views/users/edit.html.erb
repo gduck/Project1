@@ -15,11 +15,13 @@
       <h4><%= @user.role %></h4>
     </header>
 
-    <ul>
-      <% if @user.role == 'member' %>
-        <%= render 'edit_member', :f =>user_form%>
-      <% end %>
-    </ul>
+    <% if @user.role == 'member' %>
+      <%= render 'edit_member', :f =>user_form %>
+    <% elsif @user.role == 'agent' %>
+      <%= render 'edit_agent', :f =>user_form %>
+      <%#= render 'search_results', :f => user_form %>
+    <% end %>
+
     <div class="btn-group">
       <%= user_form.text_field :user_id, :value =>@user.id, :hidden => true%>
       <%= user_form.submit "Go!", :class => "btn btn-default", :type => 'submit', :id => 'user_edit' %>

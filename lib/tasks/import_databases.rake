@@ -1,7 +1,7 @@
 namespace :import_databases do
   desc "import the  database info"
 
-  task :import_lang => :environment do
+  task :import_langs => :environment do
     require 'csv'    
 
     csv_text = File.read('lib/tasks/Languages.csv')
@@ -37,10 +37,34 @@ namespace :import_databases do
     end
   end
 
+  task :import_companies => :environment do
+    require 'csv'   
+
+    csv_text = File.read('lib/tasks/companies.csv')
+    csv = CSV.parse(csv_text, :headers => true)
+
+    csv.each do |row|
+      puts ">>>>>>>> #{row.to_hash}"
+      Company.create!(row.to_hash)
+    end
+  end
+
+  task :import_agent_assocs => :environment do
+   require 'csv'   
+
+    csv_text = File.read('lib/tasks/agent_associations.csv')
+    csv = CSV.parse(csv_text, :headers => true)
+
+    csv.each do |row|
+      puts ">>>>>>>> #{row.to_hash}"
+      AgentAssociation.create!(row.to_hash)
+    end  
+  end
+
   task :import_all => :environment do
     require 'csv'
-    task :import_profnames
-    task :import_profs
-    task :import_lang
+    :import_profnames
+    :import_profs
+    :import_lang
   end
 end

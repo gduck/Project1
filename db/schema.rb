@@ -14,16 +14,17 @@
 ActiveRecord::Schema.define(version: 20150106045632) do
 
   create_table "agent_associations", force: true do |t|
-    t.integer  "user_id",                      null: false
-    t.integer  "company_id",                   null: false
-    t.string   "permissions", default: "edit"
+    t.integer  "user_id",                     null: false
+    t.integer  "company_id",                  null: false
+    t.string   "permission", default: "edit"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "companies", force: true do |t|
     t.string   "name"
-    t.string   "address"
+    t.string   "address_area"
+    t.string   "website"
     t.text     "logo_file"
     t.datetime "created_at"
     t.datetime "updated_at"
