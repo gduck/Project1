@@ -76,6 +76,7 @@ class UsersController < ApplicationController
         flash[:notice] = "Agent details updated"
         redirect_to :action => 'show', :id => @user
       end
+    end
   end
 
   protected
@@ -83,7 +84,7 @@ class UsersController < ApplicationController
     params.required(:user).permit(
       :id, :first_name, :last_name, :first_language, 
       :language_profs_attributes => [:id, :user_id, :prof_category_id, :language_id, :primary, :_destroy],
-      :agent_associations_attributes => )
+      :agent_associations_attributes => [:id, :user_id, :company_id, :permissions])
   end
 
 end
