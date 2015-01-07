@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :language_profs, :allow_destroy => true
   accepts_nested_attributes_for :agent_associations, :allow_destroy => true
+  accepts_nested_attributes_for :companies, :allow_destroy => false
 
   def self.search(search)
     if search

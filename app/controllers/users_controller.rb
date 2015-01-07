@@ -5,10 +5,6 @@ class UsersController < ApplicationController
   #$prof_name = ['Beginner', 'Conversational', 'Fluent', 'Native' ]
   #user_role
 
-  def get_user
-    @user = User.find(params[:id]) 
-    @languages = Language.all
-  end
 
   def check_auth
     # user_role = current_user.role
@@ -29,29 +25,28 @@ class UsersController < ApplicationController
   end
 
   def edit
-    # @languages = Language.all
     @categories = ProfCategory.all
     @langprof = LanguageProf.new(:user_id => @user.id, :primary => true)
-    @companies = Company.search(params[:search])
+    @companies = Company.all()
+    @company = Company.new()
+    @agent_association = AgentAssociation.new(:user_id => @user.id)
   end
 
   def create
-    if user_params[:role] == 'nil'
-      flash[:notice] = "Please choose your category!"
-      redirect_to :back
-      return
-    end
+    # if user_params[:role] == 'nil'
+    #   flash[:notice] = "Please choose your category!"
+    #   redirect_to :back
+    #   return
+    # end
   end
 
 
-
   def update
-
+    # for the case where the primary language is being set
     if !params[:primary].nil?
       LanguageProf.where(:user_id => @user.id).update_all(primary: false)
       LanguageProf.find(params[:primary]).update(primary: true)
     end
-     # error
 
     if @user.role == 'member'
       if @user.update_attributes(
@@ -67,10 +62,10 @@ class UsersController < ApplicationController
         redirect_to :back
       end
     elsif @user.role == 'agent'
-      if @user.update_attributes (
+      if @user.update_attributes(
         {
         :first_name => user_params[:first_name],
-        :last_name => user_params[:last_name],          
+        :last_name => user_params[:last_name],
         :agent_associations_attributes => user_params[:agent_associations_attributes]
         })
         flash[:notice] = "Agent details updated"
@@ -81,10 +76,30 @@ class UsersController < ApplicationController
 
   protected
   def user_params
+    # params[:user][:agent_associations_attributes][:user_id] = params[:user][:agent_associations_attributes][:user_id].to_i
+    # params[:user][:agent_associations_attributes][:company_id] = params[:user][:agent_associations_attributes][:company_id].to_i
+
     params.required(:user).permit(
-      :id, :first_name, :last_name, :first_language, 
-      :language_profs_attributes => [:id, :user_id, :prof_category_id, :language_id, :primary, :_destroy],
-      :agent_associations_attributes => [:id, :user_id, :company_id, :permissions])
+      :first_name,
+      :last_name,
+      :first_language, 
+      :language_profs_attributes => [
+        :user_id,
+        :prof_category_id,
+        :language_id,
+        :primary,
+        :_destroy
+      ],
+      :agent_associations_attributes => [
+        :user_id,
+        :company_id,
+        :permissions
+      ]
+    )
   end
 
+  def get_user
+    @user = User.find(params[:id]) 
+    @languages = Language.all
+  end
 end
