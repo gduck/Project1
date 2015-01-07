@@ -11,8 +11,8 @@
     <%= link_to_remove_fields "Remove", f %>
   </td>
   <td class="center">
-    <%= f.radio_button(:primary, true, :checked => f.object.primary, :name => "primary") %>
-    <%#= f.object %>
+    <%#= f.radio_button :primary, f.object.id, :checked => f.object.primary, :name => "primary", :id => f.object.id %>
+    <%#= f.object.id %>
   </td>
 </tr>
 

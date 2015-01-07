@@ -16,9 +16,9 @@
     </header>
 
     <% if @user.role == 'member' %>
-      <%= render 'edit_member', :f =>user_form %>
+      <%= render 'edit_member', :f => user_form %>
     <% elsif @user.role == 'agent' %>
-      <%= render 'edit_agent', :f =>user_form %>
+      <%= render 'edit_agent', :f => user_form %>
       <%#= render 'search_results', :f => user_form %>
     <% end %>
 

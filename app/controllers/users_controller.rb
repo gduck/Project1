@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   def edit
     @categories = ProfCategory.all
     @langprof = LanguageProf.new(:user_id => @user.id, :primary => true)
-    @companies = Company.all()
+    @companies = Company.all().order(name: :asc)
     @company = Company.new()
     @agent_association = AgentAssociation.new(:user_id => @user.id)
   end
@@ -80,10 +80,12 @@ class UsersController < ApplicationController
     # params[:user][:agent_associations_attributes][:company_id] = params[:user][:agent_associations_attributes][:company_id].to_i
 
     params.required(:user).permit(
+      :id,
       :first_name,
       :last_name,
       :first_language, 
       :language_profs_attributes => [
+        :id,
         :user_id,
         :prof_category_id,
         :language_id,
@@ -91,6 +93,7 @@ class UsersController < ApplicationController
         :_destroy
       ],
       :agent_associations_attributes => [
+        :id,
         :user_id,
         :company_id,
         :permissions
