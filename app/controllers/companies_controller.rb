@@ -18,8 +18,10 @@ class CompaniesController < ApplicationController
   end
 
   def update
-
-
+    if @company.update_attributes(company_params)
+      flash[:notice] = "Company details updated"
+      redirect_to :action => 'show', :id => @company
+    end
   end
 
   protected
@@ -27,4 +29,11 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id]) 
   end
 
+  def company_params
+    params.required(:company).permit(
+      :id,
+      :name,
+      :website
+      )
+  end
 end

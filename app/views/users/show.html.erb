@@ -1,18 +1,28 @@
 <div id="show-user">
 <!-- This is the view -->
   <div class="center">
-  <span>
-    <%= @user.email %>
-  </span>
-  <div> Name: <%= "#{@user.first_name} #{@user.last_name}"%></div>
-  <span>
-    <%= link_to "edit", edit_user_path %>
-  </span>
+  
+    <h2><%= "#{@user.first_name} #{@user.last_name}"%></h2>
+    <h4><%= @user.role %></h4>
+    <div>
+      <%= @user.email %>
+    </div>
+    <div>
+      <%= link_to "edit", edit_user_path %>
+    </div>
   </div>
 
-    <% if @user.role == 'member' %>
-      <%= render 'show_member' %>
-    <% elsif @user.role == 'agent' %>
-      <%= render 'show_agent' %>
-    <% end %>
+  <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+    <table class="table"> 
+      <tbody> 
 
+        <% if @user.role == 'member' %>
+          <%= render 'show_member' %>
+        <% elsif @user.role == 'agent' %>
+          <%= render 'show_agent' %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>

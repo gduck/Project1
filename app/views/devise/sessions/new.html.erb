@@ -1,48 +1,33 @@
-<div class="col-xs-12 col-xs-offset-1">
+<div class="col-xs-12 col-sm-8 col-sm-offset-2">
+  <h2>Log in</h2>
 
-      <h2>Log in</h2>
+  <%= form_for(resource, :html => {:class => "form-horizontal"}, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <table>
-            <tbody>
-              <tr>
-                <div class="field">
-                  <td>
-                    <%= f.label :email %>
-                  </td><td>
-                    <%= f.email_field :email, autofocus: true %>
-                  </td>
-                </div>
-              </tr>
-              <tr>
-                <div class="field">
-                  <td>
-                    <%= f.label :password %><br />
-                  </td><td>
-                    <%= f.password_field :password, autocomplete: "off" %>
-                  </td>
-                </div>
-              </tr>
-              <tr>
-                <td>
-                  <% if devise_mapping.rememberable? -%>
-                    <div class="field">
-                      <%= f.check_box :remember_me %>
-                      <%= f.label :remember_me %>
-                    </div>
-                  <% end -%>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="actions">
-                    <%= f.submit "Log in" %>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-        </table>
-      <% end %>
+    <div class="form_group">
+      <div class="col-sm-12">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, :placeholder => "email", :class => "form-control" %>
+      </div>
+    </div>
+
+    <div class="form_group">
+      <div class="col-sm-12">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "off", :placeholder => "password", :class => "form-control margin-bottom" %>
+      </div>
+    </div>
+
+    <!-- <%# if devise_mapping.rememberable? -%>
+      <div class="field">
+        <%#= f.check_box :remember_me %>
+        <%#= f.label :remember_me %>
+      </div>
+    <%# end -%> -->
+    <div class="actions">
+      <%= f.submit "Log in", :class => "btn btn-default" %>
+    </div>
+
+  <% end %>
 
 </div>
 <%= render "devise/shared/links" %>
