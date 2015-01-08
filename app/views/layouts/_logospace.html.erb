@@ -1,9 +1,18 @@
+
 <div class="logo-space">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-xs-6">
-        <%= image_tag "logo/wings-logo/wings-logo.jpg", :class => "img-class" %>
-      </div>
+        <div class="hidden-sm hidden-xs col-md-6">
+          <%= image_tag "logo/wings-logo/wings-logo.jpg", :class => "img-class" %>
+        </div>
+        <div class="col-sm-6 center-align">
+          <h2>Here at wantMAW, we want more!
+          </h2>
+          <p>Translators - work flexibly.</p> 
+          <p>Employers - find translators when you need them</p>
+          <p>Employment of the future is here.</p>
+          <%= link_to "Sign Up Now!", new_user_registration_path, :class=>"btn btn-default" %>
+        </div>
     </div>
   </div>
 </div>

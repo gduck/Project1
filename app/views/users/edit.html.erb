@@ -23,7 +23,7 @@
     <% end %>
 
     <div class="btn-group">
-      <%= user_form.text_field :user_id, :value =>@user.id, :hidden => true%>
+      <%#= user_form.text_field :id, :value =>@user.id, :hidden => true%>
       <%= user_form.submit "Go!", :class => "btn btn-default", :type => 'submit', :id => 'user_edit' %>
       <%= flash[:message] %>
     </div>

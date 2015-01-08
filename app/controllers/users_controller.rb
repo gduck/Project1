@@ -63,11 +63,12 @@ class UsersController < ApplicationController
         redirect_to :back
       end
     elsif @user.role == 'agent'
-      if @user.update_attributes(
-        {
+      clean_params
+      if @user.update_attributes({
         :first_name => user_params[:first_name],
-        :last_name => user_params[:last_name],
-        :agent_associations_attributes => user_params[:agent_associations_attributes]
+        :last_name => user_params[:last_name]
+        # ,
+        # :agent_associations_attributes => user_params[:agent_associations_attributes]
         })
         flash[:notice] = "Agent details updated"
         redirect_to :action => 'show', :id => @user
@@ -76,12 +77,14 @@ class UsersController < ApplicationController
   end
 
   protected
-  def user_params
-    # params[:user][:agent_associations_attributes][:user_id] = params[:user][:agent_associations_attributes][:user_id].to_i
-    # params[:user][:agent_associations_attributes][:company_id] = params[:user][:agent_associations_attributes][:company_id].to_i
+    def clean_params
+      params[:user][:agent_associations_attributes][:user_id] = params[:user][:agent_associations_attributes][:user_id].to_i
+      params[:user][:agent_associations_attributes][:company_id] = params[:user][:agent_associations_attributes][:company_id].to_i
+    end
 
+  def user_params
     params.required(:user).permit(
-      :id,
+      # :id,
       :first_name,
       :last_name,
       :first_language, 

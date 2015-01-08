@@ -18,5 +18,9 @@ module ApplicationHelper
     link_to name, "javascript:", :onclick => "add_fields(this, \"association\", \"#{escape_javascript(fields)}\");"
 
   end
+
+ def is_active?(link_path)
+  current_page?(link_path) ? "active" : ""
+ end
     
 end

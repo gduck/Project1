@@ -16,14 +16,6 @@ width: 80%;
   color: red;
 }
 
-form ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 6px 1% 9px 1%;
-  clear: both;
-  background-color: transparent;
-  position: relative;
-}
 
 label.desc {
   line-height: 150%;
@@ -46,6 +38,14 @@ input.field {
   width: 40% !important;
 }
 
+form ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 6px 1% 9px 1%;
+  clear: both;
+  background-color: transparent;
+  position: relative;
+}
 form li {
   margin: 0;
   padding: 6px 1% 9px 1%;

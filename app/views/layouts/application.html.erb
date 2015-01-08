@@ -14,25 +14,28 @@
       <div class="row">
         <div class="col-sm-10 col-sm-offset-1 col-xs-12">
           <header id="header">
-              <div class="row">
-                    <%= render 'layouts/header' %>
-              </div>
+            <!-- <div class="row"> -->
+              <%= render 'layouts/header' %>
+            <!-- </div> -->
           </header>
           <main id="main">
             <% if flash[:notice] %>
               <div id="notice"><%= flash[:notice] %></div>
             <% end %>
-            <!-- <div class="row"> -->
-            <%= yield %>
-            <!-- </div> -->
+            <!-- <div> -->
+              <%= render 'layouts/logospace' %>
+
+            <% if current_user %>
+              <%= render 'layouts/linkbar' %>
+              <%= yield %>
+            <% end %>
           </main>
           <footer class="footer">
             <div class="container col-xs-12">
               <div class="row">
                 <div class="footer-inner">
-                  <% if current_user %>
-                    <%= "Signed in as #{current_user.email}" %>
-                  <% end %>
+                  <%= render 'layouts/footer' %>
+                  
                 </div>
               </div>
             </div>
