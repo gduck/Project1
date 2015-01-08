@@ -8,7 +8,7 @@ body{
   // background-image:image-url("bg.jpg");
   // background-repeat: no-repeat;
   // background-size: 100%;
-    background-color:rgba(0,0,255,0.5);
+    background-color:rgba(0,0,100,0.5);
 }
 #main {
   background: #ffffff;
@@ -30,9 +30,10 @@ body{
 
 // HEADER
 #header {
-  background: #4014CC;
+  //background: #4014CC;
   height: 50px;
   color: #ffffff;
+  border-radius: 5px;
 }
 #header a {
   color: #FF7700;
@@ -47,14 +48,15 @@ body{
   padding-left: 10px;
 }
 #navbar {
-  background: tranparent;
-  color: black;
+  //background: tranparent;
+  //color: black;
 }
 
 #notice {
   padding-top: 20px;
   text-align: center;
   color: green;
+  background: transparent;
 }
 
 // LOGO SPACE & LINKBAR
@@ -62,6 +64,7 @@ body{
   margin-top: 20px;
   // min-height: 100px;
   background: #ffffff;
+  border-radius: 5px;
 }
 .logo-space .img-class {
   max-height: 200px;
@@ -76,8 +79,14 @@ body{
   margin-bottom: 20px;
   text-align: center;
   vertical-align: middle;
+  border-radius: 5px;
+  padding-top: 6px;
 }
-
+.link-search.form-control {
+  display: inline-block;
+  width: 150px;
+  height: 25px;
+}
 // FOOTER
 /*stuff below from bootstrap sticky footer*/
 .footer {
@@ -86,6 +95,7 @@ body{
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 60px;
+  border-radius: 5px;
   /*background-color: #eeeeee;*/
 }
 .footer-inner{
@@ -95,6 +105,7 @@ body{
   text-align: center;
   padding: 10px;
   margin-top: 10px;
+  border-radius: 5px;
 }
 
 
@@ -123,6 +134,7 @@ body{
   // margin-top: 0px;
   // margin-left: 20px;
   background-color:rgba(255,255,255,0.5);
+  border-radius: 5px;
 }
 .logo-space {
   background-color:rgba(255,255,255,0.5);
@@ -147,7 +159,7 @@ body{
   //padding-right: 5px;
 }
 .margin-left {
-  margin-left: 10px;
+  //margin-left: 10px;
 }
 .small {
   font-size: 60%;

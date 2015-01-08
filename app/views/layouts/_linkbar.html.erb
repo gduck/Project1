@@ -1,7 +1,14 @@
 <div class="linkbar">
-  <%= form_tag users_path, :method => 'get', :remote => true do %>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :lang => nil, :class => "btn btn-default transparent" %>
-    <button class="btn btn-default transparent">Advanced search</button>
-  <% end %>
+  <div class="row">
+    <div class="col-xs-4">
+      <%= link_to "Users", users_path,  :class => "btn btn-default transparent" %>
+      <%= link_to "Positions", users_path,  :class => "btn btn-default transparent" %>
+    </div>
+    <div class="col-xs-offset-4 col-xs-4">
+      <%= form_tag users_path, :method => 'get', :remote => true do %>
+        <%= text_field_tag :search, params[:search], :class => "form-control link-search" %>
+        <%= submit_tag "Search", :lang => nil, :class => "btn btn-default transparent" %>
+      <% end %>
+    </div>
+  </div>
 </div>

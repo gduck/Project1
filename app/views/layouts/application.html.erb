@@ -22,7 +22,9 @@
             <% if flash[:notice] %>
               <div id="notice"><%= flash[:notice] %></div>
             <% end %>
+            <!-- <div class="row"> -->
             <%= yield %>
+            <!-- </div> -->
           </main>
           <footer class="footer">
             <div class="container col-xs-12">
