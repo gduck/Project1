@@ -2,9 +2,6 @@ class UsersController < ApplicationController
   
   before_action :get_user, only: [:edit, :update, :destroy, :show]
   before_action :check_auth
-  #$prof_name = ['Beginner', 'Conversational', 'Fluent', 'Native' ]
-  #user_role
-
 
   def check_auth
     # user_role = current_user.role
@@ -31,14 +28,6 @@ class UsersController < ApplicationController
     @companies = Company.all().order(name: :asc)
     @company = Company.new()
     @agent_association = AgentAssociation.new(:user_id => @user.id)
-  end
-
-  def create
-    # if user_params[:role] == 'nil'
-    #   flash[:notice] = "Please choose your category!"
-    #   redirect_to :back
-    #   return
-    # end
   end
 
 

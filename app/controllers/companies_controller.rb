@@ -3,7 +3,7 @@ class CompaniesController < ApplicationController
   before_action :get_company, only: [:edit, :update, :destroy, :show]
 
   def index
-    @companies = Company.all
+    @companies = Company.all().order(name: :asc)
   end
 
 
