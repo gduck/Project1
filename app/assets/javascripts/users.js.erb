@@ -48,12 +48,12 @@ $(document).ready(function() {
     };
   });
 
-  $('#clear-btn').on('click', function () {
-    console.log("here");
+  $('#clear-btn').on('click', function (e) {
+    e.preventDefault;
     document.getElementById('search').value = "";
     $('#link-search-btn').click();
   });
-  
+
 
 });
 
