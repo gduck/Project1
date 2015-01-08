@@ -5,12 +5,23 @@
           <%= image_tag "logo/wings-logo/wings-logo.jpg", :class => "img-class" %>
         </div>
         <div class="col-md-7 center-align welcome-msg">
-          <h2>Here at wantMAW, we want more!
-          </h2>
-          <p>Translators - work flexibly.</p> 
-          <p>Employers - find translators when you need them</p>
-          <p>Employment of the future is here.</p>
-          <%= link_to "Sign Up Now!", new_user_registration_path, :class=>"btn btn-default" %>
+          <% if !current_user %>
+            <h2>Here at wantMAW, we want more!
+            </h2>
+            <p><span class="">Translators</span> - work flexibly.</p> 
+            <p><span class="">Employers</span> - find translators when you need them</p>
+            <p>Employment of the future is here.</p>
+            <%= link_to "Sign Up Now!", new_user_registration_path, :class=>"btn btn-default" %>
+          <% elsif current_user.role == 'agent' %>
+            <h2>Welcome to wantMAW!</h2>
+            <p>Take advantage of our field of high quality translators for all your translating needs.</p>
+            <p>Post your current positions now! Go through your company page to enter positions.</p>
+            <%= link_to "My Profile", edit_user_path(current_user), :class=>"btn btn-default" %>
+          <% else %>
+            <h2>Welcome to wantMAW!</h2>
+            <p>Please take some time to complete your language profile, and have a look at some of the positions available now.</p>
+            <%= link_to "My Profile", edit_user_path(current_user), :class=>"btn btn-default" %>
+          <% end %>
         </div>
     </div>
   </div>
