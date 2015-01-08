@@ -8,9 +8,16 @@ class CompaniesController < ApplicationController
 
 
   def show
+    @positions = Position.where(:company_id => @company.id)
   end
 
-  def edit
+  def create
+    company = current_user.companies.new(company_params)
+    
+    if company.save
+      flash[:notice] = "New company created!"
+      redirect_to :action => 'show', :id => company.id
+    end
   end
 
   def new

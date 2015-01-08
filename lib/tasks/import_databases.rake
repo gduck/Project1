@@ -61,10 +61,28 @@ namespace :import_databases do
     end  
   end
 
-  task :import_all => :environment do
-    require 'csv'
-    :import_profnames
-    :import_profs
-    :import_lang
+  task :import_positions => :environment do
+   require 'csv'   
+
+    csv_text = File.read('lib/tasks/positions.csv')
+    csv = CSV.parse(csv_text, :headers => true)
+
+    csv.each do |row|
+      puts ">>>>>>>> #{row.to_hash}"
+      Position.create!(row.to_hash)
+    end  
   end
+
+  task :import_lang_reqs => :environment do
+   require 'csv'   
+
+    csv_text = File.read('lib/tasks/lang_prof_requirements.csv')
+    csv = CSV.parse(csv_text, :headers => true)
+
+    csv.each do |row|
+      puts ">>>>>>>> #{row.to_hash}"
+      LangProfReq.create!(row.to_hash)
+    end  
+  end
+
 end

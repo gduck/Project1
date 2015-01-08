@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :users
   resources :language_profs
   resources :companies
-
+  resources :positions
   
 
   # Example resource route with options:
