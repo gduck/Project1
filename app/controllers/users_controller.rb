@@ -52,8 +52,8 @@ class UsersController < ApplicationController
     if @user.role == 'member'
       if @user.update_attributes(
         {
-        :first_name => user_params[:first_name],
-        :last_name => user_params[:last_name],
+        :first_name => user_params[:first_name].capitalize,
+        :last_name => user_params[:last_name].capitalize,
         :language_profs_attributes => user_params[:language_profs_attributes]
         })
         flash[:notice] = "Member details updated"
@@ -65,8 +65,8 @@ class UsersController < ApplicationController
     elsif @user.role == 'agent'
       clean_params
       if @user.update_attributes({
-        :first_name => user_params[:first_name],
-        :last_name => user_params[:last_name]
+        :first_name => user_params[:first_name].capitalize,
+        :last_name => user_params[:last_name].capitalize
         # ,
         # :agent_associations_attributes => user_params[:agent_associations_attributes]
         })
