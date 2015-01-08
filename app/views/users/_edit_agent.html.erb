@@ -1,0 +1,42 @@
+
+<ul class="fields">
+  <li class="">
+    <div class="fields">
+      <label class="desc">Name<span id="req_1" class="req">*</span></label>
+      <span>
+        <%= f.text_field :first_name, :type => "text", :class =>"field text", :tabindex =>"1", :required => true %>
+        <label for="first-name">First</label>
+      </span>
+      <span>
+        <%= f.text_field :last_name, :type => "text", :class =>"field text", :tabindex =>"2", :required => true %>
+        <label for="last-name">Last</label>
+      </span> 
+    </div>     
+  </li>
+  <li>
+    <div class="fields">
+      <label class="desc">Your Company(ies)<span id="req_2" class="req">*</span></label>
+      <div>
+        <ul class="company-list">
+          <% @user.companies.each do |comp| %>
+            <li><%= link_to comp.name, comp %></li>
+          <% end %>
+        </ul>
+        <span class="full">
+            <% if @user.companies.count == 0 %>
+              <label for="company-name">Please enter your company!</label>
+            <% else %>
+              <label for="company-name">More companies</label>
+            <% end %>
+          <%= f.fields_for :agent_associations_attributes, @agent_association do |builder| %>
+            <%= builder.collection_select :company_id, @companies, :id, :name %>
+            <%#= builder.text_field :company_id %>
+            <%= builder.hidden_field :user_id, :value => @user.id %>
+          <% end %>
+        </span>
+        If you don't see your company, please <%= link_to "add it here", new_company_path %>
+      </div>
+    </div>
+  </li>
+</ul>
+

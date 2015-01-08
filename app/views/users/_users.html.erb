@@ -1,0 +1,30 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Languages</th>
+      <th>Proficiency</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users_with_lang_profs.each do |user| %>
+      <tr>  
+        <td>
+          <%= link_to user.email, user %></td> 
+        <td>
+          <% user.languages.each do |lang| %>
+            <%= lang.name  %>
+            <br>
+          <% end %>
+        </td>
+        <td>
+          <% user.prof_categories.each do |lprof| %>
+            <%= lprof.prof_name  %>
+            <br>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+          

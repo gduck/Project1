@@ -1,0 +1,24 @@
+
+<tr>
+  <th>Language(s)</th>
+  <th>Proficiency</th>
+</tr>
+<tr>
+  <td>
+    <% @user.language_profs.each do |lp| %>
+      <%= lp.language.name  %>
+        <% if lp.primary? %>
+         - first language
+        <% end %>
+      <br>
+    <% end %>
+  </td>
+  <td>
+    <% @user.prof_categories.each do |lprof| %>
+      <%= lprof.prof_name  %>
+      <br>
+    <% end %>
+  </td>
+</tr>
+
+

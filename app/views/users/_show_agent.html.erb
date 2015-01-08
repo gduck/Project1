@@ -1,0 +1,22 @@
+
+<tr>
+  <th>Companies</th>
+  <th>Permissions</th>
+</tr>
+<tr>
+  <td>
+    <% @user.agent_associations.each do |aa| %>
+      <%= link_to aa.company.name, aa.company  %>
+      <br>
+    <% end %>
+  </td>
+  <td>
+    <% @user.agent_associations.each do |aa| %>
+      <%= aa.permission  %>
+      <br>
+    <% end %>
+  </td>
+</tr>
+
+
+

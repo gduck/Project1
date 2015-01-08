@@ -1,0 +1,2 @@
+class LangProfReqsController < ApplicationController
+end

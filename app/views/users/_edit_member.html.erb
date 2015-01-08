@@ -1,0 +1,43 @@
+<ul class="fields">
+  <li class="leftHalf">
+    <label class="desc">Name<span id="req_1" class="req">*</span></label>
+    <span>
+      <%= f.text_field :first_name, :type => "text", :class =>"field text", :tabindex =>"1", :required => true %>
+      <label for="first-name">First</label>
+    </span>
+    <span>
+      <%= f.text_field :last_name, :type => "text", :class =>"field text", :tabindex =>"2", :required => true %>
+      <label for="last-name">Last</label>
+    </span>      
+  </li>
+  <li >
+    <label class="desc">Address<span id="req_2" class="req"></span></label>
+    <div>
+      <span class="address-area full">
+        <input id="address_area" name="address_area" type="text" class="field text wide" value size="8" tabindex="3">
+        <label for="address">Area (HK Island, Kowloon, NT)</label>
+      </span>
+    </div>
+  </li>
+  <li class="">
+    <div class="">
+      <label  id="other-lang-lbl">What languages do you speak?</label>
+        <table>
+          <tbody id="other-lang">
+            <th>Language</th><th class="pad">Proficiency</th><th></th>
+            <% if @user.languages.count == 0 %>
+              <%= f.fields_for :language_profs, @langprof do |builder| %>
+                  <%= render partial: "language_prof_fields", :locals => { :f => builder, :myvariable => true } %>
+              <% end %>
+            <% else %>
+              <th>First language</th>
+              <%= f.fields_for :language_profs, @user.language_profs do |builder| %>
+                  <%= render "language_prof", :f => builder  %>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      <%= link_to_add_fields "Add another", f, :language_profs %>
+    </div>
+  </li>
+</ul>

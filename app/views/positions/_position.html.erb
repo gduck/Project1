@@ -1,0 +1,14 @@
+<tr>
+  <td>
+    <%= link_to position.name, position %></td>
+  <td>
+      <%= position.description %>
+      <br>
+  </td>
+  <td>
+      <%= link_to position.company.name, position.company %>
+      <%= puts ">>>>>>> position #{position}" %>
+      <br>
+  </td>
+</tr>
+

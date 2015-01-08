@@ -1,0 +1,17 @@
+<tr>  
+  <td>
+    <%= link_to user.first_name, user %></td> 
+  <td>
+    <% user.languages.each do |lang| %>
+      <%= lang.name  %>
+      <br>
+    <% end %>
+  </td>
+  <td>
+    <% user.prof_categories.each do |lprof| %>
+      <%= lprof.prof_name  %>
+      <br>
+    <% end %>
+  </td>
+</tr>
+

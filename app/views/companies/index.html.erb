@@ -1,0 +1,13 @@
+<!-- linkbar search only refers to users -->
+<%#= render 'layouts/linkbar' %>
+<div id="index-company" class="col-xs-12 col-md-9 col-md-offset-1 user-list margin-left">
+  <div class="center">
+    <h2>
+      Our company list
+    </h2>
+
+    <% @companies.each do |comp| %>
+      <%= link_to comp.name, comp %><br>
+    <% end %>
+    
+</div>

@@ -1,0 +1,23 @@
+<%= render 'layouts/linkbar', :my_path => positions_path %>
+  <div class="col-xs-12 col-md-9 col-md-offset-1 user-list margin-left">
+  <!-- main index of users -->
+    <h1>Positions:</h1>
+    <div>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Company</th>
+        </tr>
+        <tr>  
+        </thead>
+        <tbody id="positions">
+          <%= render @positions %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+

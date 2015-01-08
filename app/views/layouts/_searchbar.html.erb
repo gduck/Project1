@@ -1,0 +1,5 @@
+<%= form_tag search_path, :method => 'get', :remote => true do %>
+  <%= text_field_tag :search, params[:search], :class => "form-control link-search", :placeholder => "search" %>
+  <%= submit_tag "Go", :class => "btn btn-default transparent small", :id => "link-search-btn" %>
+  <button id="clear-btn" class="btn btn-default transparent small">Clear</button>
+<% end %>
