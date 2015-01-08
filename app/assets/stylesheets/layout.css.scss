@@ -81,7 +81,7 @@ body{
   height: 40px;
   background: #FF7700;
   margin-top: 20px;
-  margin-bottom: 20px;
+  //margin-bottom: 20px;
   text-align: center;
   vertical-align: middle;
   border-radius: 5px;
@@ -106,7 +106,7 @@ body{
 .footer-inner {
   background-color: white;
   //height: 60px;
-  color: #FF7700;
+  //color: #FF7700;
   text-align: center;
   padding: 10px;
   margin-top: 20px;
@@ -123,6 +123,8 @@ body{
   display: table;
   min-height: 150px;
   padding: 0;
+  margin-top: 20px;
+  //margin-left: 20px;
 }
 #login-box {
   border: 1px solid black;
@@ -150,16 +152,17 @@ body{
 }
 
 // USERS
-.user-details {
+.page-details {
     background-color:rgba(255,255,255,0.5);
     margin-top: 20px;
     border-radius: 5px;
     padding-bottom: 10px;
 }
-.user-show {
+.page-show {
     background-color:rgba(255,255,255,0.5);
     margin-top: 20px;
     border-radius: 5px;
+    padding-bottom: 10px;
 }
 
 // GENERAL
