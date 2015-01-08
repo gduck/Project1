@@ -1,14 +1,14 @@
 <!-- new language proficiencies -->
 <tr class="fields">
   <td data-langid="">
-    <%= f.collection_select(:language_id, @languages, :id, :name, {:class => "lang other-lang", :onchange => "update_langids(this);" }) %>
+    <%= locals[:f].collection_select :language_id, @languages, :id, :name, {:required => true }, {:class => "lang"} %>
   </td>
   <td class="pad">
-    <%= f.collection_select(:prof_category_id, @categories, :id, :prof_name) %>
+    <%= locals[:f].collection_select(:prof_category_id, @categories, :id, :prof_name) %>
   </td>
   <td class="pad small">
-    <%= f.hidden_field :_destroy, {:class => "killme"} %>
-    <%= link_to_remove_fields "Remove", f %>
+    <%= locals[:f].hidden_field :_destroy, {:class => "killme"} %>
+    <%= link_to_remove_fields "Remove", locals[:f] %>
   </td>
   <td class="center">
     <%#= f.radio_button :primary, f.object.id, :checked => f.object.primary, :name => "primary", :id => f.object.id %>

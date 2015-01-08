@@ -12,7 +12,7 @@ module ApplicationHelper
 
     fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
       
-      render(association.to_s.singularize + "_fields", :f => builder)
+      render(association.to_s.singularize + "_fields", :locals => { :f => builder, :myvariable => true })
     end
 
     link_to name, "javascript:", :onclick => "add_fields(this, \"association\", \"#{escape_javascript(fields)}\");"

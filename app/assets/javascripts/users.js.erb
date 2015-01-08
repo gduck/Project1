@@ -14,7 +14,7 @@ $(document).ready(function() {
     // doesn't work on the dynamic select list with class=lang ??
     $('.lang option[value="'+value+'"]')
       .attr("disabled", "disabled");
-      console.log("disabled something");
+      console.log("disabled something" + value);
   }
 
   // change the text of which first language is selected
@@ -43,8 +43,8 @@ $(document).ready(function() {
     console.log(dynamicIDs);
 
     removeAllDisabled();
-    for (i = 0; i < languageIDs.length; i++) {
-      addDisabled(languageIDs[i]);
+    for (i = 0; i < dynamicIDs.length; i++) {
+      addDisabled(dynamicIDs[i]);
     };
   });
 
