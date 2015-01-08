@@ -3,7 +3,6 @@
 
 $(document).ready(function() {
 
-
   // disabled already selected languages from the list
   var removeAllDisabled = function() {
     $("select[class='lang'] option").map(function() {
@@ -13,8 +12,9 @@ $(document).ready(function() {
 
   var addDisabled = function(value) {
     // doesn't work on the dynamic select list with class=lang ??
-    $("select[class='lang'] option[value="+value+"]")
-      .attr("disabled", "disabled")
+    $('.lang option[value="'+value+'"]')
+      .attr("disabled", "disabled");
+      console.log("disabled something");
   }
 
   // change the text of which first language is selected
@@ -23,18 +23,26 @@ $(document).ready(function() {
   });
 
   // must change the list if either drop down box changes
-  $(".lang").on('focus', function(e) {
+  $(document).on('focus',".lang", function(e) {
     e.preventDefault();
     console.log("focus function called");
-    var nativeLangID = parseInt($("#user_first_language option:selected").val());
+
     // need to return an array of values
     var languageIDs = $('#other-lang td').map(function() {
       return $(this).attr("data-langid");
     }).get();
-    console.log(languageIDs);
+    console.log("first " + languageIDs);
+    // remove empty values
+    languageIDs = $.grep(languageIDs,function(n){ return(n) });
+    console.log("second " + languageIDs);
+
+    // get dynamic languageIDs
+    var dynamicIDs = $('.lang option:selected').map(function() {
+      return $(this).attr("value");
+    }).get();
+    console.log(dynamicIDs);
 
     removeAllDisabled();
-    addDisabled(nativeLangID);
     for (i = 0; i < languageIDs.length; i++) {
       addDisabled(languageIDs[i]);
     };
