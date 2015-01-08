@@ -48,8 +48,11 @@ $(document).ready(function() {
     };
   });
 
-  // listen to list of companies, when one is selected
-  // send off via ajax to create a new record
+  $('#clear-btn').on('click', function () {
+    console.log("here");
+    document.getElementById('search').value = "";
+    $('#link-search-btn').click();
+  });
   
 
 });

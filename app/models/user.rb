@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   def self.search(search)
     if search
-      joins(:language_profs).joins(:languages).where('(languages.name || users.email) LIKE ?', "%#{search}%").includes(:language_profs)
+      joins(:language_profs).joins(:languages).where('(users.first_name || languages.name) LIKE ?', "%#{search}%").includes(:language_profs)
     else
       # limit to 5 for the front page, most recent
       order(created_at: :desc).joins(:language_profs).includes(:language_profs).limit(5)

@@ -7,7 +7,7 @@
     <div class="col-md-offset-2 col-md-4 col-xs-7 right-align">
       <%= form_tag users_path, :method => 'get', :remote => true do %>
         <%= text_field_tag :search, params[:search], :class => "form-control link-search", :placeholder => "search" %>
-        <%= submit_tag "Go", :lang => nil, :class => "btn btn-default transparent small" %>
+        <%= submit_tag "Go", :lang => nil, :class => "btn btn-default transparent small", :id => "link-search-btn" %>
         <button id="clear-btn" class="btn btn-default transparent small">Clear</button>
       <% end %>
     </div>
