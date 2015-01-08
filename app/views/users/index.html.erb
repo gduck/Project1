@@ -1,31 +1,25 @@
+
+<%= render 'layouts/linkbar' %>
 <div>
-
-  <%#= render 'layouts/logospace' %>
-
-  <div class="">
-
-    <div id="login-wrapper" class="hidden-xs hidden-sm col-md-2">
-      <%= render 'layouts/signinbox'%>
-    </div>
-
-    <div class="col-xs-12 col-md-9 col-md-offset-1 user-list margin-left">
-    <!-- main index of users -->
-      <h1>Recent joiners:</h1>
-      <div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>User</th>
-              <th>Languages</th>
-              <th>Proficiency</th>
-            </tr>
-          </thead>
-          <tbody id="users">
-            <%= render @users %>
-          </tbody>
-        </table>
-      </div>
-
+  <div id="login-wrapper" class="hidden-xs hidden-sm col-md-2">
+    <%= render 'layouts/signinbox'%>
+  </div>
+  <div class="col-xs-12 col-md-9 col-md-offset-1 user-list margin-left">
+  <!-- main index of users -->
+    <h1>Recent joiners:</h1>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Languages</th>
+            <th>Proficiency</th>
+          </tr>
+        </thead>
+        <tbody id="users">
+          <%= render @users %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div> 

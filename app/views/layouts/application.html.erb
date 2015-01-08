@@ -23,12 +23,10 @@
               <div id="notice"><%= flash[:notice] %></div>
             <% end %>
             <!-- <div> -->
-              <%= render 'layouts/logospace' %>
+            
 
-            <% if current_user %>
-              <%= render 'layouts/linkbar' %>
-              <%= yield %>
-            <% end %>
+            <%= yield %>
+
           </main>
           <footer class="footer">
             <div class="container col-xs-12">

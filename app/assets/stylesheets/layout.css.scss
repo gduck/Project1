@@ -61,6 +61,9 @@ body{
 }
 
 // LOGO SPACE & LINKBAR
+.welcome-msg {
+  padding: 10px;
+}
 .logo-space {
   margin-top: 20px;
   // min-height: 100px;
@@ -101,23 +104,25 @@ body{
 /*stuff below from bootstrap sticky footer*/
 .footer {
   //position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  border-radius: 5px;
+  // bottom: 0;
+  // width: 100%;
+  // Set the fixed height of the footer here
+  // height: 60px;
+  // border-radius: 5px;
   /*background-color: #eeeeee;*/
 }
 .footer-inner{
   background-color: white;
-  height: 60px;
+  height: 40px;
   color: #FF7700;
   text-align: center;
   padding: 10px;
   margin-top: 20px;
   border-radius: 5px;
 }
-
+.footer a {
+  color: #FF7700;
+}
 
 
 // MAIN CONTENT
@@ -135,13 +140,14 @@ body{
   padding: 10px;
   text-align: center;
 }
+
 #content-box {
   margin-top: 20px;
   display: inline-block;
 }
 .user-list {
   // padding: 0;
-  // margin-top: 0px;
+  margin-top: 20px;
   // margin-left: 20px;
   background-color:rgba(255,255,255,0.5);
   border-radius: 5px;

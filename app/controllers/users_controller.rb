@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
   before_action :get_user, only: [:edit, :update, :destroy, :show]
-  before_action :check_auth, only: [:edit, :update, :destroy, :show]
+  before_action :check_auth
   #$prof_name = ['Beginner', 'Conversational', 'Fluent', 'Native' ]
   #user_role
 
@@ -10,13 +10,13 @@ class UsersController < ApplicationController
     # user_role = current_user.role
     if current_user == nil 
       flash[:notice] = "Please log in!"
-      redirect_to(users_path)
+      redirect_to(root_path)
       return
     end
-    if current_user !=  @user && current_user.role != 'admin'
-       flash[:notice] = "You may only view your own profile!"
-       redirect_to(users_path)
-    end
+    # if current_user !=  @user && current_user.role != 'admin'
+    #    flash[:notice] = "You may only view your own profile!"
+    #    redirect_to(users_path)
+    # end
   end
 
   def index
