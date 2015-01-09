@@ -8,10 +8,10 @@
           <% if !current_user %>
             <h2>Here at wantMAW, we want more!
             </h2>
-            <p><span class="">Translators</span> - work flexibly.</p> 
-            <p><span class="">Employers</span> - find translators when you need them</p>
-            <p>Employment of the future is here.</p>
+            <p><span class="frijole small">Translators</span><br>work flexibly.</p> 
+            <p><span class="frijole small">Employers</span><br>find translators when you need them</p>
             <%= link_to "Sign Up Now!", new_user_registration_path, :class=>"btn btn-default" %>
+            <p>Employment of the future is here.</p>
           <% elsif current_user.role == 'agent' %>
             <h2>Welcome to wantMAW!</h2>
             <p>Take advantage of our field of high quality translators for all your translating needs.</p>

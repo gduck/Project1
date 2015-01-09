@@ -127,13 +127,16 @@ body{
   //margin-left: 20px;
 }
 #login-box {
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 25px;
   height: 100%;
   display: table-cell; 
   vertical-align: middle;
   padding: 10px;
   text-align: center;
+}
+#login-box a{
+  color: white;
 }
 
 #content-box {
