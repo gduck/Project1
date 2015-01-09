@@ -1,5 +1,6 @@
 <tr class="fields">
-  <td data-langID="<%= f.object.language_id %>" class="pad">
+  <td data-langID="<%= f.object.language.id %>" class="pad">
+    <%= f.object.language %>
     <%= f.label :language_id, "#{f.object.language.name}" %>
   </td>
   <td class="pad">

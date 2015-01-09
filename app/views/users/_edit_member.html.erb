@@ -27,7 +27,7 @@
             <th>Language</th><th class="pad">Proficiency</th><th></th>
             <% if @user.languages.count == 0 %>
               <%= f.fields_for :language_profs, @langprof do |builder| %>
-                  <%= render partial: "language_prof_fields", :locals => { :f => builder, :myvariable => true } %>
+                  <%= render "language_prof_fields", :f => builder %>
               <% end %>
             <% else %>
               <th>First language</th>
