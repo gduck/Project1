@@ -62,7 +62,7 @@ namespace :import_databases do
   def import_agent_assocs
    require 'csv'   
 
-    csv_text = File.read('lib/tasks/agent_associations.csv')
+    csv_text = File.read('lib/tasks/Agent_associations.csv')
     csv = CSV.parse(csv_text, :headers => true)
 
     csv.each do |row|
@@ -71,7 +71,7 @@ namespace :import_databases do
     end  
   end
 
-  task :import_positions => :environment do
+  def import_positions
    require 'csv'   
 
     csv_text = File.read('lib/tasks/positions.csv')
@@ -86,7 +86,7 @@ namespace :import_databases do
   def import_lang_reqs
    require 'csv'   
 
-    csv_text = File.read('lib/tasks/lang_prof_requirements.csv')
+    csv_text = File.read('lib/tasks/Lang_prof_requirements.csv')
     csv = CSV.parse(csv_text, :headers => true)
 
     csv.each do |row|
