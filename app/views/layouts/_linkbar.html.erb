@@ -1,8 +1,8 @@
 <div class="linkbar">
   <div class="row">
     <div class="col-xs-5 left-align">
-      <%= link_to "Users", users_path,  :class => is_active?(users_path) + " btn btn-default transparent small" %>
-      <%= link_to "Positions", positions_path,  :class => "btn btn-default transparent small" %>
+      <%= link_to "USERS", users_path,  :class => is_active?(users_path) + " btn btn-default transparent small" %>
+      <%= link_to "POSITIONS", positions_path,  :class => is_active?(positions_path) + " btn btn-default transparent small" %>
     </div>
     <div class="col-md-offset-2 col-md-4 col-xs-7 right-align">
       <%= render 'layouts/searchbar', :search_path => my_path %>
