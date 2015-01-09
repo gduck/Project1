@@ -48,6 +48,13 @@ $(document).ready(function() {
     };
   });
 
+    // before GO button is pressed, update all langids
+  $(document).on('focus', "#user_edit", function(e) {
+    var elements = $('.dynamic-lang');
+    console.log(elements);
+    console.log("in on focus");
+  });
+
   $('#clear-btn').on('click', function (e) {
     e.preventDefault;
     document.getElementById('search').value = "";

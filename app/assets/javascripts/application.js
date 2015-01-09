@@ -33,3 +33,4 @@
     var element = document.getElementById(link.id);
     $(link).parent().attr("data-langid", element.selectedIndex);
   }
+
