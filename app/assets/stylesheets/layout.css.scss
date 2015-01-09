@@ -170,6 +170,14 @@ body{
   margin-top: 10px;
   padding-bottom: 15px;
 }
+.message-column {
+  max-width: 60px;
+}
+
+// POSITIONS
+#positions .company-column {
+  min-width: 100px;
+}
 
 // GENERAL
 .btn-default.transparent {
