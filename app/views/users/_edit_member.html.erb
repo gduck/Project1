@@ -2,20 +2,20 @@
   <li class="leftHalf">
     <label class="desc">Name<span id="req_1" class="req">*</span></label>
     <span>
-      <%= f.text_field :first_name, :type => "text", :class =>"field text", :tabindex =>"1", :required => true %>
       <label for="first-name">First</label>
+      <%= f.text_field :first_name, :type => "text", :class =>"field text", :tabindex =>"1", :required => true %>
     </span>
     <span>
-      <%= f.text_field :last_name, :type => "text", :class =>"field text", :tabindex =>"2", :required => true %>
       <label for="last-name">Last</label>
+      <%= f.text_field :last_name, :type => "text", :class =>"field text", :tabindex =>"2", :required => true %>
     </span>      
   </li>
   <li >
     <label class="desc">Address<span id="req_2" class="req"></span></label>
     <div>
       <span class="address-area full">
-        <input id="address_area" name="address_area" type="text" class="field text wide" value size="8" tabindex="3">
         <label for="address">Area (HK Island, Kowloon, NT)</label>
+        <input id="address_area" name="address_area" type="text" class="field text wide" value size="8" tabindex="3">
       </span>
     </div>
   </li>
@@ -37,6 +37,7 @@
             <% end %>
           </tbody>
         </table>
+        <br>
       <%= link_to_add_fields "Add another", f, :language_profs %>
     </div>
   </li>
