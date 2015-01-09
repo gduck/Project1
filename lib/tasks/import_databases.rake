@@ -71,7 +71,7 @@ namespace :import_databases do
     end  
   end
 
-  def import_positions
+  task :import_positions => :environment do
    require 'csv'   
 
     csv_text = File.read('lib/tasks/positions.csv')
