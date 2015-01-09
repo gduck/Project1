@@ -2,7 +2,7 @@
 <tr class="fields">
   <!-- default language is lang_id 1, English -->
   <td data-langid="1">
-    <%= f.collection_select :language_id, @languages, :id, :name, {:required => true }, {:class => "lang other-lang dynamic-lang", :onchange => "update_langids(this);" } %>
+    <%= f.collection_select :language_id, @languages, :id, :name, { }, {:class => "lang other-lang dynamic-lang", :onchange => "update_langids(this);" } %>
   </td>
   <td class="pad">
     <%= f.collection_select(:prof_category_id, @categories, :id, :prof_name) %>
