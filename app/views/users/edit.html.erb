@@ -12,7 +12,8 @@
         </div>
       <% end %>
       <header class="info">
-        <h2>Edit details for <%= "#{@user.first_name} #{@user.last_name}" %></h2>
+        <h2>Edit details for <%= "#{@user.email}" %></h2>
+        <h3><%= "#{@user.first_name} #{@user.last_name}" %></h3>
         <h4><%= @user.role %></h4>
       </header>
   </div>
@@ -21,15 +22,11 @@
         <%= render 'edit_member', :f => user_form %>
       <% elsif @user.role == 'agent' %>
         <%= render 'edit_agent', :f => user_form %>
-        <%#= render 'search_results', :f => user_form %>
       <% end %>
 
       <div class="btn-group">
-        <%#= user_form.text_field :id, :value =>@user.id, :hidden => true%>
         <%= user_form.submit "Go!", :class => "btn btn-default", :type => 'submit', :id => 'user_edit' %>
         <%= flash[:message] %>
-      </div>
-      <div id="warning-msg">
       </div>
     </div>
   <% end %>

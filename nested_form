@@ -1,0 +1,32 @@
+<div id="edit-user">
+  <%= form_for @user  do |user_form| %>
+ 
+      <% if @user.role == 'member' %>
+        <%= render 'edit_member', :f => user_form %>
+      <% elsif @user.role == 'agent' %>
+        <%= render 'edit_agent', :f => user_form %>
+      <% end %>
+
+      <div class="btn-group">
+        <%= user_form.submit "Go!", :class => "btn btn-default", :type => 'submit', :id => 'user_edit' %>
+        <%= flash[:message] %>
+      </div>
+  <% end %>
+</div>
+
+<ul class="edit_member">
+  <li class="">
+      <label  id="other-lang-lbl">What languages do you speak?</label>
+        <table>
+          <tbody id="other-lang">
+            <th>Language</th><th class="pad">Proficiency</th><th></th>
+              <%= f.fields_for :language_profs, @langprof do |builder| %>
+                  <%= render "language_prof_fields", :f => builder %>
+              <% end %>
+          </tbody>
+        </table>
+        <br>
+      <%= link_to_add_fields "Add another", f, :language_profs %>
+  </li>
+</ul>
+

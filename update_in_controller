@@ -1,0 +1,16 @@
+  def update
+    # for the case where the primary language is being set
+    if !params[:primary].nil?
+      LanguageProf.where(:user_id => @user.id).update_all(primary: false)
+      LanguageProf.find(params[:primary]).update(primary: true)
+    end
+
+    if @user.update_attributes(user_params)
+      flash[:notice] = "Member details updated"
+      redirect_to :action => 'show', :id => @user
+    else
+      flash[:notice] = "There was a problem updating user"
+      redirect_to :back
+    end
+  end
+  
