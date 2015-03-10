@@ -96,6 +96,7 @@ class UsersController < ApplicationController
 
   def get_user
     @user = User.find(params[:id]) 
+    # if no @user send error message, return
     @languages = Language.all
   end
 end

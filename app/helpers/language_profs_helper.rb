@@ -1,2 +1,0 @@
-module LanguageProfsHelper
-end
